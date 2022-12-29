@@ -1,0 +1,48 @@
+{
+  "root": true,
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "project": ["./tsconfig.json"]
+  },
+  "plugins": ["import"],
+  "ignorePatterns": [".eslintrc.json", "jest.config.js", "tests/setup.js"],
+  "overrides": [
+    {
+      "files": ["e2e/**/*.ts"],
+      "parserOptions": {
+        "project": ["./e2e/tsconfig.json"]
+      }
+    },
+    {
+      "files": ["tests/**/*.test.ts*"],
+      "rules": {
+        "max-statements": "off",
+        "max-lines-per-function": "off",
+        "max-lines": "off"
+      }
+    }
+  ],
+  "rules": {
+    "import/extensions": [
+      "error",
+      "never",
+      { "svg": "always", "styles": "always", "scss": "always", "png": "always" }
+    ],
+    "max-lines-per-function": ["error", { "max": 120 }],
+    "newline-per-chained-call": ["error", { "ignoreChainWithDepth": 3 }],
+    "no-restricted-imports": [2, { "patterns": ["../*"] }],
+    "no-restricted-modules": [2, { "patterns": ["../*"] }],
+    "import/order": [
+      "error",
+      {
+        "newlines-between": "always",
+        "groups": ["builtin", "external", "internal", "sibling", "unknown"],
+        "pathGroups": [
+          { "pattern": "~/**", "group": "internal" },
+          { "pattern": "#/**", "group": "sibling" },
+          { "pattern": "!/**", "group": "sibling" }
+        ]
+      }
+    ]
+  }
+}
