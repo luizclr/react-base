@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Base /> should be able to mount <Base /> component 1`] = `
+<DocumentFragment>
+  <h1
+    class="sc-bcXHqe ctRNJO"
+  >
+    React Base
+  </h1>
+</DocumentFragment>
+`;

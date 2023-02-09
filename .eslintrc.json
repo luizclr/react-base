@@ -1,33 +1,45 @@
 {
-  "root": true,
-  "parser": "@typescript-eslint/parser",
-  "parserOptions": {
-    "project": ["./tsconfig.json"]
-  },
-  "plugins": ["import"],
-  "ignorePatterns": [".eslintrc.json", "jest.config.js", "tests/setup.js"],
-  "overrides": [
-    {
-      "files": ["e2e/**/*.ts"],
-      "parserOptions": {
-        "project": ["./e2e/tsconfig.json"]
-      }
+  "settings": {
+    "react": {
+      "version": "detect"
     },
-    {
-      "files": ["tests/**/*.test.ts*"],
-      "rules": {
-        "max-statements": "off",
-        "max-lines-per-function": "off",
-        "max-lines": "off"
-      }
+    "import/resolver": {
+      "typescript": {}
     }
+  },
+  "env": {
+    "browser": true,
+    "es2021": true
+  },
+  "extends": [
+    "standard-with-typescript",
+    "plugin:react/recommended",
+    "prettier",
+    "plugin:import/typescript"
   ],
+  "parserOptions": {
+    "project": "./tsconfig-eslint.json"
+  },
+  "plugins": ["react", "import", "eslint-plugin-import-helpers"],
   "rules": {
+    "no-console": "error",
     "import/extensions": [
       "error",
       "never",
-      { "svg": "always", "styles": "always", "scss": "always", "png": "always" }
+      {
+        "svg": "always",
+        "styles": "always",
+        "png": "always"
+      }
     ],
+    "import/export": "off",
+    "react/react-in-jsx-scope": "off",
+    "@typescript-eslint/no-misused-promises": "off",
+    "@typescript-eslint/consistent-type-definitions": "off",
+    "@typescript-eslint/consistent-type-imports": "off",
+    "quotes": ["error", "double"],
+    "semi": ["error", "always"],
+    "comma-dangle": ["error", "only-multiline"],
     "max-lines-per-function": ["error", { "max": 120 }],
     "newline-per-chained-call": ["error", { "ignoreChainWithDepth": 3 }],
     "no-restricted-imports": [2, { "patterns": ["../*"] }],
@@ -39,8 +51,7 @@
         "groups": ["builtin", "external", "internal", "sibling", "unknown"],
         "pathGroups": [
           { "pattern": "~/**", "group": "internal" },
-          { "pattern": "#/**", "group": "sibling" },
-          { "pattern": "!/**", "group": "sibling" }
+          { "pattern": "#/**", "group": "sibling" }
         ]
       }
     ]
