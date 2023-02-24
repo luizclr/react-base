@@ -14,7 +14,7 @@ When a new release is proposed:
 
 ### Added
 
--
+- Global context with App and Auth states
 
 ### Fixed
 
@@ -22,7 +22,7 @@ When a new release is proposed:
 
 ### Changed
 
--
+- Update libraries' version
 
 ### Removed
 
