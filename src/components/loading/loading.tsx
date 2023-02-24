@@ -1,9 +1,9 @@
 import progressBar from "~/assets/img/progress-bar.gif";
 import { Background, Text } from "~/components/loading/loading.styles";
-import { useApplication } from "~/providers/application/application";
+import { useApp } from "~/state/app/hook";
 
 export const Loading: React.FC = () => {
-  const { isLoading } = useApplication();
+  const { isLoading } = useApp();
 
   return (
     <Background show={isLoading}>

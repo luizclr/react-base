@@ -3,6 +3,7 @@ import { Navigate, Route, Routes } from "react-router-dom";
 
 import { Base } from "~/pages/base/base";
 import { Login } from "~/pages/login/login";
+import { useAuth } from "~/state/auth/hook";
 
 export type ProtectedRouteProps = {
   isAuthenticated: boolean;
@@ -23,8 +24,10 @@ export const PrivateRoute = ({
 };
 
 export const AppRoutes = (): ReactElement => {
+  const { isAuthenticated } = useAuth();
+
   const defaultProtectedRouteProps: Omit<ProtectedRouteProps, "outlet"> = {
-    isAuthenticated: true, // !!authContext.isAuthenticated,
+    isAuthenticated,
     authenticationPath: "/login",
   };
 
