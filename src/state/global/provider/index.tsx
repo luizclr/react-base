@@ -1,5 +1,6 @@
 import { PropsWithChildren, ReactElement, useMemo, useReducer } from "react";
 
+import { initialServicesState } from "~/state";
 import { initialAppState } from "~/state/app";
 import { AppReducer } from "~/state/app/reducer";
 import { initialAuthState } from "~/state/auth";
@@ -16,6 +17,7 @@ export const GlobalProvider = ({ children }: PropsWithChildren): ReactElement =>
       appDispatch,
       auth: AuthState,
       authDispatch,
+      ...initialServicesState,
     }),
     [AppState, AuthState]
   );
