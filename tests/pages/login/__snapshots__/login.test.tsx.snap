@@ -1,0 +1,57 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Login /> should be able to mount <Base /> component 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-bcXHqe bXMQIQ"
+  >
+    <div
+      class="sc-dkrFOg cboemz"
+    >
+      <form>
+        <h2
+          class="sc-hLBbgP dCYQyq"
+        >
+          Login
+        </h2>
+        <div
+          class="sc-gswNZR hakikL"
+        >
+          <label>
+            E-mail
+          </label>
+          <input
+            class="sc-eDvSVe eYqUUU"
+            placeholder="example@email.com"
+            type="email"
+            value="a@a.com"
+          />
+        </div>
+        <div
+          class="sc-gswNZR hakikL"
+        >
+          <label>
+            Password
+          </label>
+          <input
+            class="sc-eDvSVe eYqUUU"
+            placeholder="**********"
+            type="password"
+            value="123"
+          />
+        </div>
+        <div
+          class="sc-jSUZER dUVMfB"
+        >
+          <button
+            class="sc-gKPRtg eaYbTf"
+            type="submit"
+          >
+            SIGN IN
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</DocumentFragment>
+`;

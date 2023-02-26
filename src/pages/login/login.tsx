@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useContext, useState } from "react";
 
 import {
   Button,
@@ -9,24 +9,49 @@ import {
   Input,
   Title,
 } from "~/pages/login/login.styles";
-import { useApp } from "~/state/app/hook";
 import { AppActionTypes } from "~/state/app/reducer/types";
+import GlobalContext from "~/state/global/context";
+import { isEmpty } from "~/utils";
 
 export const Login: React.FC = () => {
-  const { isLoading, dispatch } = useApp();
+  const { authService, appDispatch } = useContext(GlobalContext);
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
+  const [email, setEmail] = useState("a@a.com");
+  const [password, setPassword] = useState("123");
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
     e.preventDefault();
+
+    appDispatch({
+      type: AppActionTypes.loading,
+      payload: { isLoading: true },
+    });
+
+    if (isEmpty(email) || isEmpty(password)) return;
+
+    await authService.authenticate({ email, password }, { onSuccess, onUnauthorized, onError });
   };
 
-  useEffect(() => {
-    dispatch({
+  const onSuccess = (token: string): void => {
+    appDispatch({
       type: AppActionTypes.loading,
-      payload: {
-        isLoading: true,
-      },
+      payload: { isLoading: false },
     });
-  }, [isLoading]);
+  };
+
+  const onUnauthorized = (): void => {
+    appDispatch({
+      type: AppActionTypes.loading,
+      payload: { isLoading: false },
+    });
+  };
+
+  const onError = (): void => {
+    appDispatch({
+      type: AppActionTypes.loading,
+      payload: { isLoading: false },
+    });
+  };
 
   return (
     <Container>
@@ -35,11 +60,25 @@ export const Login: React.FC = () => {
           <Title>Login</Title>
           <Flex>
             <label>E-mail</label>
-            <Input type="email" placeholder="example@email.com" />
+            <Input
+              type="email"
+              placeholder="example@email.com"
+              value={email}
+              onChange={(e) => {
+                setEmail(e.target.value);
+              }}
+            />
           </Flex>
           <Flex>
             <label>Password</label>
-            <Input type="password" placeholder="**********" />
+            <Input
+              type="password"
+              placeholder="**********"
+              value={password}
+              onChange={(e) => {
+                setPassword(e.target.value);
+              }}
+            />
           </Flex>
           <ButtonWrapper>
             <Button type="submit">SIGN IN</Button>

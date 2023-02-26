@@ -15,6 +15,7 @@ When a new release is proposed:
 ### Added
 
 - Global context with App and Auth states
+- Added `AuthService` tests
 
 ### Fixed
 
