@@ -16,6 +16,8 @@ When a new release is proposed:
 
 - Global context with App and Auth states
 - Added `AuthService` tests
+- Added `LocalStorageService`
+- Added `InMemoryStorageService`
 
 ### Fixed
 
