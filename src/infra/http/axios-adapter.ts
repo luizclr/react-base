@@ -1,6 +1,6 @@
 import axios, { AxiosInstance, AxiosResponse } from "axios";
 
-import { HttpClient, HttpRequest, HttpResponse } from "~/data/interfaces/http-client";
+import { HttpClient, HttpRequest, HttpResponse } from "~/data/http/http-client";
 import { isEmpty } from "~/utils";
 
 export class AxiosAdapter implements HttpClient {

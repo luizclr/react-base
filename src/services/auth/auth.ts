@@ -1,6 +1,6 @@
 import { StatusCodes } from "http-status-codes";
 
-import { HttpClient } from "~/data/interfaces/http-client";
+import { HttpClient } from "~/data/http/http-client";
 import {
   AuthenticateListeners,
   AuthenticateRequest,
