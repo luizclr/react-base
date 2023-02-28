@@ -18,6 +18,7 @@ When a new release is proposed:
 - Added `AuthService` tests
 - Added `LocalStorageService`
 - Added `InMemoryStorageService`
+- Added `UserService`
 
 ### Fixed
 
