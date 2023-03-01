@@ -1,5 +1,6 @@
 import { faker } from "@faker-js/faker";
 
+import { User } from "~/entities/user";
 import { AxiosAdapter } from "~/infra/http/axios-adapter";
 import AuthService from "~/services/auth/auth";
 import { AuthenticateListeners } from "~/services/auth/types";
@@ -32,7 +33,13 @@ describe("AuthService", (): void => {
     const email = faker.internet.email();
     const password = faker.internet.password();
     const token = faker.random.alphaNumeric(20);
-    const authNock = new AuthServiceMock({ email, password }, token);
+    const user = new User(
+      faker.random.alphaNumeric(20),
+      faker.name.firstName(),
+      faker.name.lastName(),
+      faker.internet.email()
+    );
+    const authNock = new AuthServiceMock({ email, password }, token, user);
 
     // when
     authNock.success();
@@ -40,7 +47,7 @@ describe("AuthService", (): void => {
     await sut.authenticate({ email, password }, listeners);
 
     // then
-    expect(listeners.onSuccess).toHaveBeenCalledWith(token);
+    expect(listeners.onSuccess).toHaveBeenCalledWith(token, user);
     expect(listeners.onUnauthorized).not.toHaveBeenCalled();
     expect(listeners.onError).not.toHaveBeenCalled();
   });
@@ -51,7 +58,13 @@ describe("AuthService", (): void => {
     const email = faker.internet.email();
     const password = faker.internet.password();
     const token = faker.random.alphaNumeric(20);
-    const authNock = new AuthServiceMock({ email, password }, token);
+    const user = new User(
+      faker.random.alphaNumeric(20),
+      faker.name.firstName(),
+      faker.name.lastName(),
+      faker.internet.email()
+    );
+    const authNock = new AuthServiceMock({ email, password }, token, user);
 
     // when
     authNock.unauthorized();
@@ -70,7 +83,13 @@ describe("AuthService", (): void => {
     const email = faker.internet.email();
     const password = faker.internet.password();
     const token = faker.random.alphaNumeric(20);
-    const authNock = new AuthServiceMock({ email, password }, token);
+    const user = new User(
+      faker.random.alphaNumeric(20),
+      faker.name.firstName(),
+      faker.name.lastName(),
+      faker.internet.email()
+    );
+    const authNock = new AuthServiceMock({ email, password }, token, user);
 
     // when
     authNock.genericError();

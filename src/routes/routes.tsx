@@ -2,7 +2,7 @@ import { ReactElement } from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
 
 import { Base } from "~/pages/base/base";
-import { Login } from "~/pages/login/login";
+import { Login } from "~/pages/login/login.container";
 import { useAuth } from "~/state/auth/hook";
 
 export type ProtectedRouteProps = {

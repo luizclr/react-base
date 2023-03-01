@@ -5,15 +5,15 @@ export const AuthReducer = (state: AuthState, action: AuthActions): AuthState =>
   switch (action.type) {
     case AuthActionTypes.signIn:
       return {
-        ...state,
         user: action.payload.user,
         token: action.payload.token,
+        isAuthenticated: true,
       };
     case AuthActionTypes.logOut:
       return {
-        ...state,
         user: undefined,
         token: "",
+        isAuthenticated: false,
       };
     default:
       return state;

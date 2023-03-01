@@ -22,7 +22,7 @@ export default class AuthService {
 
     switch (statusCode) {
       case StatusCodes.OK:
-        listeners.onSuccess(data.token);
+        listeners.onSuccess(data.token, data.user);
         break;
       case StatusCodes.UNAUTHORIZED:
         listeners.onUnauthorized();

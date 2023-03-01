@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useState } from "react";
 
 import {
   Button,
@@ -9,48 +9,22 @@ import {
   Input,
   Title,
 } from "~/pages/login/login.styles";
-import { AppActionTypes } from "~/state/app/reducer/types";
-import GlobalContext from "~/state/global/context";
 import { isEmpty } from "~/utils";
 
-export const Login: React.FC = () => {
-  const { authService, appDispatch } = useContext(GlobalContext);
+type Props = {
+  handleSubmit: (email: string, password: string) => Promise<void>;
+};
 
+export const Login: React.FC<Props> = (props: Props) => {
   const [email, setEmail] = useState("a@a.com");
   const [password, setPassword] = useState("123");
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
     e.preventDefault();
 
-    appDispatch({
-      type: AppActionTypes.loading,
-      payload: { isLoading: true },
-    });
-
     if (isEmpty(email) || isEmpty(password)) return;
 
-    await authService.authenticate({ email, password }, { onSuccess, onUnauthorized, onError });
-  };
-
-  const onSuccess = (token: string): void => {
-    appDispatch({
-      type: AppActionTypes.loading,
-      payload: { isLoading: false },
-    });
-  };
-
-  const onUnauthorized = (): void => {
-    appDispatch({
-      type: AppActionTypes.loading,
-      payload: { isLoading: false },
-    });
-  };
-
-  const onError = (): void => {
-    appDispatch({
-      type: AppActionTypes.loading,
-      payload: { isLoading: false },
-    });
+    await props.handleSubmit(email, password);
   };
 
   return (
@@ -59,9 +33,10 @@ export const Login: React.FC = () => {
         <form onSubmit={handleSubmit}>
           <Title>Login</Title>
           <Flex>
-            <label>E-mail</label>
+            <label htmlFor="email">E-mail</label>
             <Input
               type="email"
+              name="email"
               placeholder="example@email.com"
               value={email}
               onChange={(e) => {
@@ -70,9 +45,10 @@ export const Login: React.FC = () => {
             />
           </Flex>
           <Flex>
-            <label>Password</label>
+            <label htmlFor="password">Password</label>
             <Input
               type="password"
+              name="password"
               placeholder="**********"
               value={password}
               onChange={(e) => {
@@ -81,7 +57,9 @@ export const Login: React.FC = () => {
             />
           </Flex>
           <ButtonWrapper>
-            <Button type="submit">SIGN IN</Button>
+            <Button data-testid="submit" type="submit">
+              SIGN IN
+            </Button>
           </ButtonWrapper>
         </form>
       </Card>

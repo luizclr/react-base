@@ -1,11 +1,11 @@
-import { Dispatch, useContext } from "react";
+import { useContext } from "react";
 
-import { AuthState } from "~/state/auth";
-import { AuthActions } from "~/state/auth/reducer/types";
+import { signIn } from "~/state/auth/actions/sign-in";
+import { UseAuthTypes } from "~/state/auth/hook/types";
 import GlobalContext from "~/state/global/context";
 
-export const useAuth = (): AuthState & { dispatch: Dispatch<AuthActions> } => {
+export const useAuth = (): UseAuthTypes => {
   const { auth, authDispatch } = useContext(GlobalContext);
 
-  return { ...auth, dispatch: authDispatch };
+  return { ...auth, dispatch: authDispatch, signIn: signIn(authDispatch) };
 };

@@ -1,7 +1,7 @@
 import { render } from "@testing-library/react";
 import { BrowserRouter } from "react-router-dom";
 
-import { Login } from "~/pages/login/login";
+import { Login } from "~/pages/login/login.container";
 
 describe("<Login />", () => {
   it.skip("should be able to mount <Login /> component", async () => {

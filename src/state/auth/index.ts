@@ -1,4 +1,7 @@
+import { Dispatch } from "react";
+
 import { User } from "~/entities/user";
+import { AuthActions } from "~/state/auth/reducer/types";
 
 export type AuthState = {
   user?: User;
@@ -11,3 +14,5 @@ export const initialAuthState: AuthState = {
   token: "",
   isAuthenticated: false,
 };
+
+export type AuthDispatch = Dispatch<AuthActions>;
