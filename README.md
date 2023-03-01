@@ -6,12 +6,6 @@
 
 ## 🌐 [react-base.netlify.app/](https://react-base.netlify.app/)
 
-## Pages
-
-| Add                             |                Search             |
-| :------------------------------:|:---------------------------------: |
-|<img src="public/img/add-page.png">  |<img src="public/img/search-page.png"> |
-
 ## 📖 Tabe of contents
 
 1. [📋 Requirements](#requirements)
