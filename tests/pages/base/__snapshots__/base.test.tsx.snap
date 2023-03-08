@@ -2,10 +2,68 @@
 
 exports[`<Base /> should be able to mount <Base /> component 1`] = `
 <DocumentFragment>
-  <h1
-    class="sc-bcXHqe ctRNJO"
+  <div
+    class="sc-iBYQkv jThWUB"
   >
-    React Base
-  </h1>
+    <div
+      class="sc-bcXHqe sc-gswNZR fSlUTS gpJvqI"
+    >
+      <h1
+        class="sc-dkrFOg gGislR"
+      >
+        React Base
+      </h1>
+      <div
+        class="sc-hLBbgP lnoZtl"
+      >
+        <ul
+          class="sc-eDvSVe iRSkcO"
+        >
+          <li
+            class="sc-jSUZER yJUmm"
+          >
+            Config
+          </li>
+          <li
+            class="sc-jSUZER yJUmm"
+          >
+            Profile
+          </li>
+          <li
+            class="sc-jSUZER yJUmm"
+          >
+            Logout
+          </li>
+        </ul>
+        <div
+          class="sc-bcXHqe fSlUTS"
+        >
+          <ul
+            class="sc-eDvSVe iRSkcO"
+          >
+            <li
+              class="sc-jSUZER yJUmm"
+            >
+              Change theme
+            </li>
+          </ul>
+          <p
+            class="sc-gKPRtg efXdWh"
+          >
+            v0.1.0
+          </p>
+        </div>
+      </div>
+    </div>
+    <div
+      class="sc-ftTHYK cSCPsx"
+    >
+      <h1
+        class="sc-pyfCe qyslg"
+      >
+        React Base
+      </h1>
+    </div>
+  </div>
 </DocumentFragment>
 `;

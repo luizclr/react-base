@@ -1,10 +1,13 @@
 import { createGlobalStyle } from "styled-components";
 
+import { getColorByTheme } from "~/style-guide/helpers";
+
 const GlobalStyle = createGlobalStyle`
   * {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    transition: color 0.3s, background-color 0.3s;
   }
 
   html,
@@ -13,6 +16,13 @@ const GlobalStyle = createGlobalStyle`
     width: 100%;
     height: 100%;
     font-family: Open-Sans, Helvetica, Sans-Serif;
+  }
+
+  div {
+    background-color: ${getColorByTheme(
+      ({ neutral }) => neutral.lightest,
+      ({ neutral }) => neutral.darkest
+    )};
   }
 
   &::-webkit-scrollbar {

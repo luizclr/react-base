@@ -14,6 +14,7 @@ export const Flex = styled.div`
   display: flex;
   flex-direction: column;
   margin-bottom: 10px;
+  background-color: inherit;
 `;
 
 export const Card = styled.div`
@@ -45,6 +46,7 @@ export const Input = styled.input`
 export const ButtonWrapper = styled.div`
   display: flex;
   justify-content: center;
+  background-color: inherit;
 `;
 
 export const Button = styled.button`
