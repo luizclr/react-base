@@ -1,17 +1,15 @@
-import { useContext, useEffect } from "react";
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { User } from "~/entities/user";
 import { Login as BaseLogin } from "~/pages/login/login";
 import { useApp } from "~/state/app/hook";
 import { useAuth } from "~/state/auth/hook";
-import GlobalContext from "~/state/global/context";
 
 export const Login: React.FC = () => {
   const navigate = useNavigate();
-  const { authService, storageService } = useContext(GlobalContext);
-  const { setIsLoading } = useApp();
-  const { signIn, isAuthenticated } = useAuth();
+  const { setIsLoading, storageService } = useApp();
+  const { signIn, isAuthenticated, authService } = useAuth();
 
   useEffect((): void => {
     if (isAuthenticated) navigate("/");

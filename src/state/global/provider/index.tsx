@@ -9,17 +9,30 @@ import { AppReducer } from "~/state/app/reducer";
 import { AuthState, initialAuthState } from "~/state/auth";
 import { AuthReducer } from "~/state/auth/reducer";
 import GlobalContext from "~/state/global/context";
-import { initialThemeState } from "~/state/theme";
+import { ThemeState } from "~/state/theme";
 import { ThemeReducer } from "~/state/theme/reducer";
 import { ServicesTypes } from "~/state/types";
-import { defaultStyleGuide } from "~/style-guide";
+import { defaultStyleGuide, ThemeStyle } from "~/style-guide";
 
 export const GlobalProvider = ({
   children,
   value: services,
 }: PropsWithChildren<{ value: ServicesTypes }>): ReactElement => {
+  const { storageService } = initialServicesState;
+
+  const getInitialTheme = (): ThemeState => {
+    const storedItem = storageService.get("themeStyle", (item: string) => item);
+    let themeStyle = ThemeStyle.light;
+
+    if (storedItem === ThemeStyle.dark) themeStyle = ThemeStyle.dark;
+
+    storageService.set("themeStyle", themeStyle);
+    return {
+      themeStyle,
+    };
+  };
+
   const getInitialAuthState = (): AuthState => {
-    const { storageService } = initialServicesState;
     if (storageService.exists("token") && storageService.exists("user")) {
       const token = storageService.get("token", (item: string) => item);
       const user = storageService.get("user", (item: User) => {
@@ -38,7 +51,7 @@ export const GlobalProvider = ({
 
   const [appState, appDispatch] = useReducer(AppReducer, initialAppState);
   const [authState, authDispatch] = useReducer(AuthReducer, getInitialAuthState());
-  const [themeState, themeDispatch] = useReducer(ThemeReducer, initialThemeState);
+  const [themeState, themeDispatch] = useReducer(ThemeReducer, getInitialTheme());
 
   const value = useMemo(
     () => ({

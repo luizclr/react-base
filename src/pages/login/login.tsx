@@ -16,8 +16,8 @@ type Props = {
 };
 
 export const Login: React.FC<Props> = (props: Props) => {
-  const [email, setEmail] = useState("a@a.com");
-  const [password, setPassword] = useState("123");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
     e.preventDefault();

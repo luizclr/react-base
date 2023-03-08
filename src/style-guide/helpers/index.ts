@@ -15,8 +15,8 @@ export const getTheme =
 
 /**
  *
- * @param lightCallback callback to be called if theme is 'dark'
- * @param rightCallback callback to be called if theme is 'light'
+ * @param lightCallback callback to be called if theme is 'light'
+ * @param rightCallback callback to be called if theme is 'dark'
  * @returns string | number to use as css value
  */
 export const getColorByTheme =

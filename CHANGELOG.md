@@ -19,6 +19,9 @@ When a new release is proposed:
 - Added `LocalStorageService`
 - Added `InMemoryStorageService`
 - Added `UserService`
+- Added `<Login />` page
+- Added `StyleGuide`
+- Added `Theme` state
 
 ### Fixed
 
