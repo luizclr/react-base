@@ -1,24 +1,13 @@
-import { Title } from "~/pages/base/base.styles";
-import { useTheme } from "~/state/theme/hook";
-import { ThemeStyle } from "~/style-guide";
+import { Sidebar } from "~/components/sidebar/sidebar.container";
+import { BaseContent, BaseWrapper, Title } from "~/pages/base/base.styles";
 
 export const Base: React.FC = () => {
-  const { themeStyle, setDarkTheme, setLightTheme } = useTheme();
-
-  const handleClick = (): void => {
-    if (themeStyle === ThemeStyle.dark) {
-      setLightTheme();
-    } else {
-      setDarkTheme();
-    }
-  };
-
   return (
-    <>
-      <Title>React Base</Title>
-      <button type="button" onClick={handleClick}>
-        change theme
-      </button>
-    </>
+    <BaseWrapper>
+      <Sidebar />
+      <BaseContent>
+        <Title>React Base</Title>
+      </BaseContent>
+    </BaseWrapper>
   );
 };

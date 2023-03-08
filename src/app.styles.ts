@@ -7,7 +7,7 @@ const GlobalStyle = createGlobalStyle`
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    transition: color 1s, background-color 1s;
+    transition: color 0.3s, background-color 0.3s;
   }
 
   html,
@@ -21,7 +21,7 @@ const GlobalStyle = createGlobalStyle`
   div {
     background-color: ${getColorByTheme(
       ({ neutral }) => neutral.lightest,
-      ({ primary }) => primary.darkest
+      ({ neutral }) => neutral.darkest
     )};
   }
 
