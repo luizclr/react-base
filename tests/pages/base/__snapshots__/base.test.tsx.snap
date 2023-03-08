@@ -3,9 +3,14 @@
 exports[`<Base /> should be able to mount <Base /> component 1`] = `
 <DocumentFragment>
   <h1
-    class="sc-bcXHqe ctRNJO"
+    class="sc-bcXHqe iSIflK"
   >
     React Base
   </h1>
+  <button
+    type="button"
+  >
+    change theme
+  </button>
 </DocumentFragment>
 `;

@@ -1,5 +1,7 @@
 import { PropsWithChildren, ReactElement, useMemo, useReducer } from "react";
+import { ThemeProvider } from "styled-components";
 
+import GlobalStyle from "~/app.styles";
 import { User } from "~/entities/user";
 import { initialServicesState } from "~/state";
 import { initialAppState } from "~/state/app";
@@ -7,8 +9,15 @@ import { AppReducer } from "~/state/app/reducer";
 import { AuthState, initialAuthState } from "~/state/auth";
 import { AuthReducer } from "~/state/auth/reducer";
 import GlobalContext from "~/state/global/context";
+import { initialThemeState } from "~/state/theme";
+import { ThemeReducer } from "~/state/theme/reducer";
+import { ServicesTypes } from "~/state/types";
+import { defaultStyleGuide } from "~/style-guide";
 
-export const GlobalProvider = ({ children }: PropsWithChildren): ReactElement => {
+export const GlobalProvider = ({
+  children,
+  value: services,
+}: PropsWithChildren<{ value: ServicesTypes }>): ReactElement => {
   const getInitialAuthState = (): AuthState => {
     const { storageService } = initialServicesState;
     if (storageService.exists("token") && storageService.exists("user")) {
@@ -27,19 +36,29 @@ export const GlobalProvider = ({ children }: PropsWithChildren): ReactElement =>
     return initialAuthState;
   };
 
-  const [AppState, appDispatch] = useReducer(AppReducer, initialAppState);
-  const [AuthState, authDispatch] = useReducer(AuthReducer, getInitialAuthState());
+  const [appState, appDispatch] = useReducer(AppReducer, initialAppState);
+  const [authState, authDispatch] = useReducer(AuthReducer, getInitialAuthState());
+  const [themeState, themeDispatch] = useReducer(ThemeReducer, initialThemeState);
 
   const value = useMemo(
     () => ({
-      app: AppState,
+      app: appState,
       appDispatch,
-      auth: AuthState,
+      auth: authState,
       authDispatch,
-      ...initialServicesState,
+      theme: themeState,
+      themeDispatch,
+      ...services,
     }),
-    [AppState, AuthState]
+    [appState, authState, themeState]
   );
 
-  return <GlobalContext.Provider value={value}>{children}</GlobalContext.Provider>;
+  return (
+    <GlobalContext.Provider value={value}>
+      <ThemeProvider theme={{ ...defaultStyleGuide, themeStyle: themeState.themeStyle }}>
+        <GlobalStyle />
+        {children}
+      </ThemeProvider>
+    </GlobalContext.Provider>
+  );
 };
