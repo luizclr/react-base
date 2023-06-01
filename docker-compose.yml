@@ -4,25 +4,11 @@ services:
   react-base:
     container_name: react-base
     build:
-      context: .
-      network: host
       dockerfile: Dockerfile
+      context: .
+    stdin_open: true
+    ports:
+      - "4000:4000"
     volumes:
       - "${PWD}:/app"
       - "/app/node_modules"
-    ports:
-      - "4000:4000"
-    expose:
-      - 4000
-    environment:
-      # CHOKIDAR_USEPOLLING: true
-      VIRTUAL_HOST: "app.react-base.localtest"
-      VIRTUAL_PORT: "4000"
-    stdin_open: true
-    networks:
-      - react-base
-
-networks:
-  react-base:
-    name: react-base
-    external: true

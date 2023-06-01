@@ -9,14 +9,13 @@ module.exports = merge(common, {
   devtool: "inline-source-map",
   devServer: {
     static: path.join(__dirname, "public"),
-    host: "localhost",
+    host: "0.0.0.0",
     port: 4000,
     hot: true,
-    historyApiFallback: true,
     watchFiles: {
       paths: ["src/**/*"],
       options: {
-        usePolling: false,
+        usePolling: true,
       },
     },
   },

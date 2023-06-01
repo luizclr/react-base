@@ -17,6 +17,10 @@ down:
 sh:
 	docker exec -it react-base sh
 
+# list containers
+ps:
+	docker-compose ps
+
 # package scripts
 lint:
 	docker-compose run --rm $(CONTAINER_NAME) yarn lint
