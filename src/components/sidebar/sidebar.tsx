@@ -14,7 +14,7 @@ export const BaseSidebar: React.FC<BaseSidebarProps> = ({
   handleChangeThemeClick,
 }: BaseSidebarProps) => {
   return (
-    <SidebarWrapper>
+    <SidebarWrapper data-testid="sidebar">
       <Text>React Base</Text>
       <SidebarContent>
         <List>

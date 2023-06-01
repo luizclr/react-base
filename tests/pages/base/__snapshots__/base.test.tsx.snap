@@ -2,53 +2,143 @@
 
 exports[`<Base /> should be able to mount <Base /> component 1`] = `
 <DocumentFragment>
-  <div
-    class="sc-iBYQkv jThWUB"
+  .c1 {
+  background-color: #1c1c1c;
+}
+
+.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  width: 300px;
+  border-right: 1px solid #383838;
+  color: #e8e8e8;
+  padding: 16px 0;
+}
+
+.c3 {
+  padding: 0 16px;
+}
+
+.c4 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  height: 100%;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  background-color: inherit;
+}
+
+.c5 {
+  list-style-type: none;
+  margin-top: 32px;
+}
+
+.c6 {
+  -webkit-transition: none;
+  transition: none;
+  padding: 16px;
+  font-weight: 500;
+  border-bottom: 1px solid #383838;
+}
+
+.c6:hover {
+  cursor: pointer;
+  background-color: #383838;
+}
+
+.c6:last-child {
+  border: none;
+}
+
+.c7 {
+  text-align: center;
+  font-size: 14px;
+  margin-top: 16px;
+}
+
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+
+.c8 {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.c9 {
+  font-family: "Courier New",Courier,monospace;
+  text-align: center;
+  font-size: 35pt;
+  margin-left: 10px;
+  color: #e8e8e8;
+}
+
+<div
+    class="c0"
   >
     <div
-      class="sc-bcXHqe sc-gswNZR fSlUTS gpJvqI"
+      class="c1 c2"
+      data-testid="sidebar"
     >
       <h1
-        class="sc-dkrFOg gGislR"
+        class="c3"
       >
         React Base
       </h1>
       <div
-        class="sc-hLBbgP lnoZtl"
+        class="c4"
       >
         <ul
-          class="sc-eDvSVe iRSkcO"
+          class="c5"
         >
           <li
-            class="sc-jSUZER yJUmm"
+            class="c6"
           >
             Config
           </li>
           <li
-            class="sc-jSUZER yJUmm"
+            class="c6"
           >
             Profile
           </li>
           <li
-            class="sc-jSUZER yJUmm"
+            class="c6"
           >
             Logout
           </li>
         </ul>
         <div
-          class="sc-bcXHqe fSlUTS"
+          class="c1"
         >
           <ul
-            class="sc-eDvSVe iRSkcO"
+            class="c5"
           >
             <li
-              class="sc-jSUZER yJUmm"
+              class="c6"
             >
               Change theme
             </li>
           </ul>
           <p
-            class="sc-gKPRtg efXdWh"
+            class="c7"
           >
             v0.1.0
           </p>
@@ -56,10 +146,10 @@ exports[`<Base /> should be able to mount <Base /> component 1`] = `
       </div>
     </div>
     <div
-      class="sc-ftTHYK cSCPsx"
+      class="c8"
     >
       <h1
-        class="sc-pyfCe qyslg"
+        class="c9"
       >
         React Base
       </h1>

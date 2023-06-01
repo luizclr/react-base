@@ -21,7 +21,7 @@ When a new release is proposed:
 - Added `UserService`
 - Added `<Login />` page
 - Added `StyleGuide`
-- Added `Theme` state
+- Added `Theme` from `react-styled-guide`
 
 ### Fixed
 
@@ -33,4 +33,4 @@ When a new release is proposed:
 
 ### Removed
 
--
+- remove local theme

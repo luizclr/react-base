@@ -1,24 +1,23 @@
 import { useNavigate } from "react-router-dom";
+import { ThemeTypes, useTheme } from "react-styled-guide";
 
 import { BaseSidebar } from "~/components/sidebar/sidebar";
 import { useApp } from "~/state/app/hook";
 import { useAuth } from "~/state/auth/hook";
-import { useTheme } from "~/state/theme/hook";
-import { ThemeStyle } from "~/style-guide";
 
 export const Sidebar: React.FC = () => {
   const { storageService } = useApp();
-  const { themeStyle, setDarkTheme, setLightTheme } = useTheme();
+  const { theme, setDarkTheme, setLightTheme } = useTheme();
   const { signOut } = useAuth();
   const navigate = useNavigate();
 
   const handleChangeThemeClick = (): void => {
-    if (themeStyle === ThemeStyle.dark) {
+    if (theme === ThemeTypes.dark) {
       setLightTheme();
-      storageService.set("themeStyle", ThemeStyle.light);
+      storageService.set("theme", ThemeTypes.light);
     } else {
       setDarkTheme();
-      storageService.set("themeStyle", ThemeStyle.dark);
+      storageService.set("theme", ThemeTypes.dark);
     }
   };
 

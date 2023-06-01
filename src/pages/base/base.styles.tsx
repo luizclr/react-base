@@ -1,6 +1,5 @@
+import { getColorByTheme } from "react-styled-guide";
 import styled from "styled-components";
-
-import { getColorByTheme } from "~/style-guide/helpers";
 
 export const BaseWrapper = styled.div`
   display: flex;

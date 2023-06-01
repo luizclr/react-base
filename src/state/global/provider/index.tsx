@@ -1,5 +1,5 @@
 import { PropsWithChildren, ReactElement, useMemo, useReducer } from "react";
-import { ThemeProvider } from "styled-components";
+import { StyledGuideProvider, ThemeTypes } from "react-styled-guide";
 
 import GlobalStyle from "~/app.styles";
 import { User } from "~/entities/user";
@@ -9,27 +9,23 @@ import { AppReducer } from "~/state/app/reducer";
 import { AuthState, initialAuthState } from "~/state/auth";
 import { AuthReducer } from "~/state/auth/reducer";
 import GlobalContext from "~/state/global/context";
-import { ThemeState } from "~/state/theme";
-import { ThemeReducer } from "~/state/theme/reducer";
-import { ServicesTypes } from "~/state/types";
-import { defaultStyleGuide, ThemeStyle } from "~/style-guide";
+import { GlobalProviderProps } from "~/state/global/provider/types";
 
 export const GlobalProvider = ({
   children,
-  value: services,
-}: PropsWithChildren<{ value: ServicesTypes }>): ReactElement => {
+  value: { services, styleGuide },
+}: PropsWithChildren<{ value: GlobalProviderProps }>): ReactElement => {
   const { storageService } = initialServicesState;
 
-  const getInitialTheme = (): ThemeState => {
-    const storedItem = storageService.get("themeStyle", (item: string) => item);
-    let themeStyle = ThemeStyle.light;
+  const getInitialTheme = (): ThemeTypes => {
+    const storedItem = storageService.get("theme", (item: string) => item);
+    let theme = ThemeTypes.light;
 
-    if (storedItem === ThemeStyle.dark) themeStyle = ThemeStyle.dark;
+    if (storedItem === ThemeTypes.dark) theme = ThemeTypes.dark;
 
-    storageService.set("themeStyle", themeStyle);
-    return {
-      themeStyle,
-    };
+    storageService.set("theme", theme);
+
+    return theme;
   };
 
   const getInitialAuthState = (): AuthState => {
@@ -51,7 +47,6 @@ export const GlobalProvider = ({
 
   const [appState, appDispatch] = useReducer(AppReducer, initialAppState);
   const [authState, authDispatch] = useReducer(AuthReducer, getInitialAuthState());
-  const [themeState, themeDispatch] = useReducer(ThemeReducer, getInitialTheme());
 
   const value = useMemo(
     () => ({
@@ -59,19 +54,17 @@ export const GlobalProvider = ({
       appDispatch,
       auth: authState,
       authDispatch,
-      theme: themeState,
-      themeDispatch,
       ...services,
     }),
-    [appState, authState, themeState]
+    [appState, authState]
   );
 
   return (
     <GlobalContext.Provider value={value}>
-      <ThemeProvider theme={{ ...defaultStyleGuide, themeStyle: themeState.themeStyle }}>
+      <StyledGuideProvider value={{ ...styleGuide, theme: getInitialTheme() }}>
         <GlobalStyle />
         {children}
-      </ThemeProvider>
+      </StyledGuideProvider>
     </GlobalContext.Provider>
   );
 };

@@ -1,12 +1,5 @@
+import { getColor, getColorByTheme, getFontSize, getFontWeight, getSize } from "react-styled-guide";
 import styled from "styled-components";
-
-import {
-  getColorByTheme,
-  getColors,
-  getFontSizes,
-  getFontWeight,
-  getSizes,
-} from "~/style-guide/helpers";
 
 export const Container = styled.div`
   background-color: ${getColorByTheme(
@@ -24,12 +17,12 @@ export const SidebarWrapper = styled(Container)`
       ({ primary }) => primary.dark,
       ({ neutral }) => neutral.darker
     )};
-  color: ${getColors(({ neutral }) => neutral.lightest)};
-  padding: ${getSizes(({ xxxs }) => xxxs)} 0;
+  color: ${getColor(({ neutral }) => neutral.lightest)};
+  padding: ${getSize(({ xxxs }) => xxxs)} 0;
 `;
 
 export const Text = styled.h1`
-  padding: 0 ${getSizes(({ xxxs }) => xxxs)};
+  padding: 0 ${getSize(({ xxxs }) => xxxs)};
 `;
 
 export const SidebarContent = styled.div`
@@ -42,12 +35,12 @@ export const SidebarContent = styled.div`
 
 export const List = styled.ul`
   list-style-type: none;
-  margin-top: ${getSizes(({ xs }) => xs)};
+  margin-top: ${getSize(({ xs }) => xs)};
 `;
 
 export const ListItem = styled.li`
   transition: none;
-  padding: ${getSizes(({ xxxs }) => xxxs)};
+  padding: ${getSize(({ xxxs }) => xxxs)};
   font-weight: ${getFontWeight(({ medium }) => medium)};
   border-bottom: 1px solid
     ${getColorByTheme(
@@ -70,6 +63,6 @@ export const ListItem = styled.li`
 
 export const Version = styled.p`
   text-align: center;
-  font-size: ${getFontSizes(({ xs }) => xs)};
-  margin-top: ${getSizes(({ xxxs }) => xxxs)};
+  font-size: ${getFontSize(({ xs }) => xs)};
+  margin-top: ${getSize(({ xxxs }) => xxxs)};
 `;

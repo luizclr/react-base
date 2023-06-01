@@ -1,6 +1,6 @@
 import { faker } from "@faker-js/faker";
 
-import { InMemoryStorageService } from "~/infra/storage/in-memory/in-memory-storage";
+import { InMemoryStorageService } from "~/infra/services/storage/in-memory/in-memory-storage";
 
 describe("InMemoryStorageService", (): void => {
   it("should be able to set value by key and get it back", (): void => {

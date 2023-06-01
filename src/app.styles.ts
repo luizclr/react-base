@@ -1,6 +1,5 @@
+import { getColorByTheme } from "react-styled-guide";
 import { createGlobalStyle } from "styled-components";
-
-import { getColorByTheme } from "~/style-guide/helpers";
 
 const GlobalStyle = createGlobalStyle`
   * {

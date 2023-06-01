@@ -1,6 +1,6 @@
 import { faker } from "@faker-js/faker";
 
-import { LocalStorageService } from "~/infra/storage/local-storage/local-storage";
+import { LocalStorageService } from "~/infra/services/storage/local-storage/local-storage";
 
 describe("LocalStorageService", (): void => {
   it("should be able to set value by key and get it back", (): void => {
