@@ -4,7 +4,7 @@ import { ReactElement } from "react";
 import { BrowserRouter } from "react-router-dom";
 
 import { AxiosAdapter } from "~/infra/http/axios-adapter";
-import { InMemoryStorageService } from "~/infra/services/storage/in-memory/in-memory-storage";
+import { LocalStorageService } from "~/infra/services/storage/local-storage/local-storage";
 import AuthService from "~/services/auth/auth";
 import UserService from "~/services/user/user";
 import { initialDispatchesState } from "~/state";
@@ -18,7 +18,7 @@ const httpClient = new AxiosAdapter("http://www.example.com");
 
 const mockServiceState: ServicesTypes = {
   authService: new AuthService(httpClient),
-  storageService: new InMemoryStorageService(),
+  storageService: new LocalStorageService(),
   userService: new UserService(httpClient),
 };
 
@@ -42,7 +42,7 @@ export const render = (children: ReactElement, options?: OptionsType): RenderRes
   };
 
   if (isNil(options?.isLogged)) {
-    localStorage.setItem("token", faker.random.alphaNumeric());
+    localStorage.setItem("token", faker.random.alphaNumeric(20));
     localStorage.setItem("user", JSON.stringify(user));
   } else {
     localStorage.clear();

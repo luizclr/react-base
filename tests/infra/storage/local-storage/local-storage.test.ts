@@ -12,7 +12,7 @@ describe("LocalStorageService", (): void => {
       name: username,
     };
     const parser = <user>(data: unknown): user => {
-      return data as user;
+      return JSON.parse(data as string) as user;
     };
 
     // when
