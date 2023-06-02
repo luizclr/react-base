@@ -18,7 +18,20 @@ module.exports = merge(common, {
     ...common.plugins,
     new CleanWebpackPlugin(),
     new FaviconsWebpackPlugin({
-      logo: path.join(__dirname, "public", "favicon.ico"),
+      logo: path.join(__dirname, "..", "public", "favicon.ico"),
     }),
   ],
+  module: {
+    rules: [
+      ...common.module.rules,
+      {
+        test: /\.tsx?$/,
+        loader: "ts-loader",
+        exclude: /node_modules/,
+        options: {
+          configFile: "tsconfig.prod.json",
+        },
+      },
+    ],
+  },
 });

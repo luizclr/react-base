@@ -2,20 +2,28 @@ CONTAINER_NAME=react-base
 
 # build image
 build:
-	docker build -t react-base .
+	docker build -t $(CONTAINER_NAME) -f $(CONTAINER_NAME) --file ./docker/dev/Dockerfile .
+build-prod:
+	docker build -t $(CONTAINER_NAME)-prod -f $(CONTAINER_NAME)-prod --file ./docker/prod/Dockerfile .
 
 # build and run container
 up:
 	docker-compose up -d
+
+up-prod:
+	docker run --rm --name $(CONTAINER_NAME)-prod -p 4000:80 -d $(CONTAINER_NAME)-prod
 
 # stop container
 down:
 	docker-compose kill
 	docker-compose rm -f
 
+down-prod:
+	docker stop $(CONTAINER_NAME)-prod
+
 # enter in container's shell
 sh:
-	docker exec -it react-base sh
+	docker exec -it $(CONTAINER_NAME) sh
 
 # list containers
 ps:

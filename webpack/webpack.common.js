@@ -5,9 +5,9 @@ const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
-  entry: path.join(__dirname, "src", "index.tsx"),
+  entry: path.join(__dirname, "..", "src", "index.tsx"),
   output: {
-    path: path.join(__dirname, "dist"),
+    path: path.join(__dirname, "..", "dist"),
     filename: "[name].[contenthash].js",
     chunkFilename: "[name].[contenthash].js",
   },
@@ -19,11 +19,6 @@ module.exports = {
         loader: "babel-loader",
       },
       {
-        test: /\.tsx?$/,
-        use: "ts-loader",
-        exclude: /node_modules/,
-      },
-      {
         test: /\.(png|jpg|jpeg|svg|gif|woff|woff2|ttf|eot)$/,
         use: "file-loader",
       },
@@ -32,12 +27,12 @@ module.exports = {
   resolve: {
     extensions: [".tsx", ".ts", ".js", "jsx"],
     alias: {
-      "~": path.join(__dirname, "src"),
+      "~": path.join(__dirname, "..", "src"),
     },
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: path.join(__dirname, "public", "index.html"),
+      template: path.join(__dirname, "..", "public", "index.html"),
     }),
     new webpack.DefinePlugin({
       "process.env": JSON.stringify(process.env),

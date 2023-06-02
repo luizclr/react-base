@@ -2,9 +2,9 @@ version: "3.8"
 
 services:
   react-base:
-    container_name: react-base
+    image: react-base
     build:
-      dockerfile: Dockerfile
+      dockerfile: docker/dev/Dockerfile
       context: .
     stdin_open: true
     ports:
