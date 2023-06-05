@@ -11,7 +11,7 @@ up:
 	docker-compose up -d
 
 up-prod:
-	docker run --rm --name $(CONTAINER_NAME)-prod -p 4000:80 -d $(CONTAINER_NAME)-prod
+	docker-compose -f docker-compose.prod.yml up -d
 
 # stop container
 down:

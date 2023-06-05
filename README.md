@@ -11,6 +11,8 @@
 
 1. [📋 Requirements](#requirements)
 2. [🛠️ Installation and usage](#installation-and-usage)
+    - [Using yarn](#using-yarn)
+    - [Using Docker](#using-docker)
 3. [🗂️ Component Structure (general)](#component-structure-general)
 4. [🧑🏻‍💻 Contributing](#contributing)
     - [Branch names](#branch-names)
@@ -19,9 +21,22 @@
 ## Requirements
 
 - NodeJs
-- npm
+- yarn
 - nvm
+
+or
+
+- docker
+- docker-compose
 ## Installation and usage
+
+> Create a copy `.env` file from `.env.example` and populate the variables.
+
+```shell
+cp .env.example .env
+```
+
+### Using yarn
 
 Using `nvm`? change local node version to project's node version on `.nvmrc`.
 
@@ -31,40 +46,71 @@ nvm install
 
 Install dependencies:
 ```shell
-npm install
+yarn install
 ```
-
-> Create a copy `.env` file from `.env.example` and populate the variables.
 
 Run project on development mode:
 ```shell
-npm run dev
+yarn dev
 ```
-> a new browser window will be opened on [localhost:4000](http://localhost:4000).
+> Open new browser window on [localhost:4000](http://localhost:4000).
 
 Run unit tests:
 ```shell
-npm test
+yarn test
+```
+
+Run linter:
+```shell
+yarn lint
 ```
 
 Build for production:
 ```shell
-npm run build
+yarn build
 ```
 
 Start server with built code:
 ```shell
-npm start
+yarn start
+```
+
+### Using Docker
+
+build image:
+```shell
+make build
+```
+
+Run project on development mode:
+```shell
+make up
+```
+> Open new browser window on [localhost:4000](http://localhost:4000).
+
+stop container:
+```shell
+make down
+```
+
+Run unit tests:
+```shell
+make test
+```
+
+Run linter:
+```shell
+make lint
 ```
 
 ## Component Structure (general)
 
 ```
-\component
-    component.tsx
-    component.styles.tsx
-    component.container.tsx
-    types.ts
+└─ component
+    ├─ component.tsx
+    ├─ component.styles.tsx
+    ├─ component.container.tsx
+    └─ types.ts
 ```
 
 ## Contributing
