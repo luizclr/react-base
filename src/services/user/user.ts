@@ -1,27 +1,31 @@
 import { StatusCodes } from "http-status-codes";
 
 import { HttpClient } from "~/data/http/http-client";
-import { User } from "~/entities/user";
+import { ErrorHandler } from "~/infra/http/error-handler";
+import { GetUserByIdResponse } from "~/services/user/dto/get-user-by-id-response";
 import { UserListeners } from "~/services/user/types";
 
 export default class UserService {
   constructor(private readonly httpClient: HttpClient) {}
 
   public async getUserById(id: string, listeners: UserListeners): Promise<void> {
-    const { data, statusCode } = await this.httpClient.request<User>({
-      url: `/users/${id}`,
-      method: "get",
-    });
+    try {
+      const response = await this.httpClient.request({
+        url: `/users/${id}`,
+        method: "get",
+      });
 
-    switch (statusCode) {
-      case StatusCodes.OK:
-        listeners.onSuccess(data);
-        break;
-      case StatusCodes.NOT_FOUND:
+      const user = await response.getData(GetUserByIdResponse.parse);
+
+      listeners.onSuccess(user);
+    } catch (error) {
+      const errorHandler = new ErrorHandler(error);
+
+      if (errorHandler.hasStatus(StatusCodes.NOT_FOUND)) {
         listeners.onNotFound();
-        break;
-      default:
+      } else {
         listeners.onError();
+      }
     }
   }
 }

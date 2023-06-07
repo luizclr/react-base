@@ -1,34 +1,36 @@
 import { StatusCodes } from "http-status-codes";
 
 import { HttpClient } from "~/data/http/http-client";
-import {
-  AuthenticateListeners,
-  AuthenticateRequest,
-  AuthenticateResponse,
-} from "~/services/auth/types";
+import { AuthService } from "~/data/services/auth/auth-service";
+import { ErrorHandler } from "~/infra/http/error-handler";
+import { AuthenticateResponse } from "~/services/auth/dto/authenticate-response";
+import { AuthenticateListeners, AuthenticateRequest } from "~/services/auth/types";
 
-export default class AuthService {
+export default class AppAuthService implements AuthService {
   constructor(private readonly httpClient: HttpClient) {}
 
   public async authenticate(
     request: AuthenticateRequest,
     listeners: AuthenticateListeners
   ): Promise<void> {
-    const { data, statusCode } = await this.httpClient.request<AuthenticateResponse>({
-      url: "/auth",
-      method: "get",
-      body: request,
-    });
+    try {
+      const response = await this.httpClient.request({
+        url: "/auth",
+        method: "get",
+        body: request,
+      });
 
-    switch (statusCode) {
-      case StatusCodes.OK:
-        listeners.onSuccess(data.token, data.user);
-        break;
-      case StatusCodes.UNAUTHORIZED:
+      const { token, user } = await response.getData(AuthenticateResponse.parse);
+
+      listeners.onSuccess(token, user);
+    } catch (error) {
+      const errorHandler = new ErrorHandler(error);
+
+      if (errorHandler.hasStatus(StatusCodes.UNAUTHORIZED)) {
         listeners.onUnauthorized();
-        break;
-      default:
+      } else {
         listeners.onError();
+      }
     }
   }
 }

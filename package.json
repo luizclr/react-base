@@ -14,7 +14,6 @@
     "test:watch": "yarn test --watchAll",
     "test:coverage": "yarn test --coverage",
     "test:coverage:watch": "yarn test:coverage --watchAll",
-    "test:with-nock-debug": "DEBUG=nock.* yarn test",
     "test:ci": "yarn test:coverage --silent",
     "lint": "eslint .",
     "lint:fix": "yarn lint --fix",
@@ -81,6 +80,7 @@
     "ts-loader": "^9.4.2",
     "webpack": "^5.75.0",
     "webpack-cli": "^5.0.1",
-    "webpack-merge": "^5.8.0"
+    "webpack-merge": "^5.8.0",
+    "zod": "^3.21.4"
   }
 }

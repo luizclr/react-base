@@ -39,10 +39,10 @@ describe("AuthService", (): void => {
       faker.name.lastName(),
       faker.internet.email()
     );
-    const authNock = new AuthServiceMock({ email, password }, token, user);
+    const authMock = new AuthServiceMock({ email, password }, token, user);
 
     // when
-    authNock.success();
+    authMock.success();
 
     await sut.authenticate({ email, password }, listeners);
 
@@ -64,10 +64,10 @@ describe("AuthService", (): void => {
       faker.name.lastName(),
       faker.internet.email()
     );
-    const authNock = new AuthServiceMock({ email, password }, token, user);
+    const authMock = new AuthServiceMock({ email, password }, token, user);
 
     // when
-    authNock.unauthorized();
+    authMock.unauthorized();
 
     await sut.authenticate({ email, password }, listeners);
 
@@ -89,10 +89,10 @@ describe("AuthService", (): void => {
       faker.name.lastName(),
       faker.internet.email()
     );
-    const authNock = new AuthServiceMock({ email, password }, token, user);
+    const authMock = new AuthServiceMock({ email, password }, token, user);
 
     // when
-    authNock.genericError();
+    authMock.genericError();
 
     await sut.authenticate({ email, password }, listeners);
 

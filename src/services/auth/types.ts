@@ -5,11 +5,6 @@ export type AuthenticateRequest = {
   password: string;
 };
 
-export type AuthenticateResponse = {
-  token: string;
-  user: User;
-};
-
 export type AuthenticateListeners = {
   onSuccess: (token: string, user: User) => void;
   onUnauthorized: () => void;

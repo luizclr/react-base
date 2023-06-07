@@ -14,14 +14,15 @@ When a new release is proposed:
 
 ### Added
 
-- Global context with App and Auth states
-- Added `AuthService` tests
-- Added `LocalStorageService`
-- Added `InMemoryStorageService`
-- Added `UserService`
-- Added `<Login />` page
-- Added `StyleGuide`
-- Added `Theme` from `react-styled-guide`
+- Global context with App and Auth states.
+- Added `AuthService` tests.
+- Added `LocalStorageService`.
+- Added `InMemoryStorageService`.
+- Added `UserService`.
+- Added `<Login />` page.
+- Added `StyleGuide`.
+- Added `Theme` from `react-styled-guide`.
+- Added `zod` to work as JSON validator in services.
 
 ### Fixed
 
@@ -29,8 +30,8 @@ When a new release is proposed:
 
 ### Changed
 
-- Update libraries' version
+- Update libraries' version.
 
 ### Removed
 
-- remove local theme
+- remove local theme.

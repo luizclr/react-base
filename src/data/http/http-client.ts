@@ -1,18 +1,6 @@
-export type HttpMethod = "post" | "get" | "put" | "delete";
-
-export type HttpRequest = {
-  url: string;
-  method: HttpMethod;
-  body?: unknown;
-  headers?: Record<string, string>;
-  params?: unknown;
-};
+import { HttpRequest } from "~/data/http/http-request";
+import { HttpResponse } from "~/data/http/http-response";
 
 export interface HttpClient {
-  request: <ResponseType>(request: HttpRequest) => Promise<HttpResponse<ResponseType>>;
+  request: (request: HttpRequest) => Promise<HttpResponse>;
 }
-
-export type HttpResponse<T = unknown> = {
-  statusCode: number;
-  data: T;
-};

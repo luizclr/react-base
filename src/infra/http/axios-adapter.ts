@@ -1,6 +1,8 @@
-import axios, { AxiosInstance, AxiosResponse } from "axios";
+import axios, { AxiosInstance } from "axios";
 
-import { HttpClient, HttpRequest, HttpResponse } from "~/data/http/http-client";
+import { HttpClient } from "~/data/http/http-client";
+import { HttpRequest } from "~/data/http/http-request";
+import { HttpResponse } from "~/data/http/http-response";
 import { isEmpty } from "~/utils";
 
 export class AxiosAdapter implements HttpClient {
@@ -17,22 +19,14 @@ export class AxiosAdapter implements HttpClient {
     });
   }
 
-  async request<ResponseType>(data: HttpRequest): Promise<HttpResponse<ResponseType>> {
-    let axiosResponse: AxiosResponse<ResponseType>;
-    try {
-      axiosResponse = await this.axios.request({
-        url: data.url,
-        method: data.method,
-        data: data.body,
-        headers: data.headers,
-      });
-    } catch (error) {
-      axiosResponse = error.response;
-    }
+  async request(data: HttpRequest): Promise<HttpResponse> {
+    const axiosResponse = await this.axios.request({
+      url: data.url,
+      method: data.method,
+      data: data.body,
+      headers: data.headers,
+    });
 
-    return {
-      statusCode: axiosResponse.status,
-      data: axiosResponse.data,
-    };
+    return new HttpResponse(axiosResponse.status, axiosResponse.data);
   }
 }

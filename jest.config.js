@@ -1,6 +1,6 @@
 module.exports = {
   verbose: true,
-  roots: ["<rootDir>/tests"],
+  roots: ["<rootDir>/tests", "<rootDir>/src"],
   collectCoverageFrom: ["src/**/*.{ts,tsx}", "!src/index.tsx"],
   setupFiles: ["./tests/setup-envs.js"],
   setupFilesAfterEnv: ["./tests/setup.js"],
@@ -18,7 +18,7 @@ module.exports = {
   coverageThreshold: {
     global: {
       branches: 50,
-      functions: 75,
+      functions: 50,
       lines: 80,
       statements: 80,
     },

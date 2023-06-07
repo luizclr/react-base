@@ -2,7 +2,7 @@ import { RequestHandler } from "axios-mock-adapter";
 import { StatusCodes } from "http-status-codes";
 
 import { User } from "~/entities/user";
-import { AuthenticateListeners, AuthenticateRequest } from "~/services/auth/types";
+import { AuthenticateRequest } from "~/services/auth/types";
 
 import { mock } from "#/test-utils/mock";
 
@@ -16,11 +16,6 @@ export class AuthServiceMock {
   ) {
     this.mockInstance = mock.onGet("/auth", this.params);
   }
-
-  public authenticate: (
-    request: AuthenticateRequest,
-    listeners: AuthenticateListeners
-  ) => Promise<void>;
 
   public success(): void {
     this.mockInstance.replyOnce(StatusCodes.OK, { token: this.token, user: this.user });

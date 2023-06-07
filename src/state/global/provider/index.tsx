@@ -2,7 +2,7 @@ import { PropsWithChildren, ReactElement, useMemo, useReducer } from "react";
 import { StyledGuideProvider, ThemeTypes } from "react-styled-guide";
 
 import GlobalStyle from "~/app.styles";
-import { User } from "~/entities/user";
+import { userDTO } from "~/services/user/dto/user";
 import { initialServicesState } from "~/state";
 import { initialAppState } from "~/state/app";
 import { AppReducer } from "~/state/app/reducer";
@@ -18,7 +18,7 @@ export const GlobalProvider = ({
   const { storageService } = initialServicesState;
 
   const getInitialTheme = (): ThemeTypes => {
-    const storedItem = storageService.get("theme", (item: string) => item);
+    const storedItem = storageService.get("theme", (item: unknown) => JSON.stringify(item));
     let theme = ThemeTypes.light;
 
     if (storedItem === ThemeTypes.dark) theme = ThemeTypes.dark;
@@ -29,20 +29,21 @@ export const GlobalProvider = ({
   };
 
   const getInitialAuthState = (): AuthState => {
-    if (storageService.exists("token") && storageService.exists("user")) {
-      const token = storageService.get("token", (item: string) => item);
-      const user = storageService.get("user", (item: User) => {
-        return new User(item.id, item.firstName, item.lastName, item.email);
-      });
+    try {
+      if (!storageService.exists("token") && !storageService.exists("user"))
+        throw new Error("Parsing: can't parse user from storage - invalid schema");
+
+      const token = storageService.get("token", (item: unknown) => JSON.stringify(item));
+      const user = storageService.get("user", (item: unknown) => userDTO.parse(item));
 
       return {
         user,
         token,
         isAuthenticated: true,
       };
+    } catch (error) {
+      return initialAuthState;
     }
-
-    return initialAuthState;
   };
 
   const [appState, appDispatch] = useReducer(AppReducer, initialAppState);
