@@ -2,7 +2,7 @@ import { PropsWithChildren, ReactElement, useMemo, useReducer } from "react";
 import { StyledGuideProvider, ThemeTypes } from "react-styled-guide";
 
 import GlobalStyle from "~/app.styles";
-import { userDTO } from "~/services/user/dto/user";
+import { User } from "~/entities/user";
 import { initialServicesState } from "~/state";
 import { initialAppState } from "~/state/app";
 import { AppReducer } from "~/state/app/reducer";
@@ -29,21 +29,21 @@ export const GlobalProvider = ({
   };
 
   const getInitialAuthState = (): AuthState => {
-    try {
-      if (!storageService.exists("token") && !storageService.exists("user"))
-        throw new Error("Parsing: can't parse user from storage - invalid schema");
-
+    if (storageService.exists("token") && storageService.exists("user")) {
       const token = storageService.get("token", (item: unknown) => JSON.stringify(item));
-      const user = storageService.get("user", (item: unknown) => userDTO.parse(item));
+      // @ts-expect-error: -
+      const user = storageService.get("user", (item: User) => {
+        return new User(item.id, item.firstName, item.lastName, item.email);
+      });
 
       return {
         user,
         token,
         isAuthenticated: true,
       };
-    } catch (error) {
-      return initialAuthState;
     }
+
+    return initialAuthState;
   };
 
   const [appState, appDispatch] = useReducer(AppReducer, initialAppState);
