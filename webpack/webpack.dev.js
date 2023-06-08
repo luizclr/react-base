@@ -6,9 +6,9 @@ const common = require("./webpack.common");
 
 module.exports = merge(common, {
   mode: "development",
-  devtool: "inline-source-map",
+  devtool: "source-map",
   devServer: {
-    static: path.join(__dirname, "public"),
+    static: path.join(__dirname, "..", "public"),
     host: "0.0.0.0",
     port: 4000,
     hot: true,
@@ -22,13 +22,12 @@ module.exports = merge(common, {
   },
   module: {
     rules: [
-      ...common.module.rules,
       {
         test: /\.tsx?$/,
         loader: "ts-loader",
         exclude: /node_modules/,
         options: {
-          configFile: "tsconfig.json",
+          configFile: path.join(__dirname, "..", "tsconfig.json"),
         },
       },
     ],
