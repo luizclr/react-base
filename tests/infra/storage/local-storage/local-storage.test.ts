@@ -5,9 +5,9 @@ import { LocalStorageService } from "~/infra/services/storage/local-storage/loca
 describe("LocalStorageService", (): void => {
   it("should be able to set value by key and get it back", (): void => {
     // given
-    const key = faker.random.word();
+    const key = faker.string.sample();
     const storage = new LocalStorageService();
-    const username = faker.name.firstName();
+    const username = faker.person.firstName();
     const user = {
       name: username,
     };
@@ -26,10 +26,10 @@ describe("LocalStorageService", (): void => {
 
   it("should be able to delete item", (): void => {
     // given
-    const key = faker.random.word();
+    const key = faker.string.sample();
     const storage = new LocalStorageService();
     const user = {
-      name: faker.name.firstName(),
+      name: faker.person.firstName(),
     };
 
     // when

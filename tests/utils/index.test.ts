@@ -22,8 +22,8 @@ describe("utils/", () => {
 
     it("should return false if other value is passed", async () => {
       // given
-      const number = faker.random.numeric();
-      const string = faker.random.word();
+      const number = faker.number.int();
+      const string = faker.word.words(1);
       const boolean = faker;
       const object = {};
 
@@ -50,7 +50,7 @@ describe("utils/", () => {
       expect(response).toBe(true);
     });
 
-    it("should return true if empty string is passed", async () => {
+    it("should return true if empty array is passed", async () => {
       // when
       const response = isEmpty([]);
 
@@ -58,9 +58,9 @@ describe("utils/", () => {
       expect(response).toBe(true);
     });
 
-    it("should return true if empty string is passed", async () => {
+    it("should return false if valid string is passed", async () => {
       // given
-      const value = faker.random.word();
+      const value = faker.word.words(1);
 
       // when
       const response = isEmpty(value);
@@ -69,9 +69,9 @@ describe("utils/", () => {
       expect(response).toBe(false);
     });
 
-    it("should return true if empty string is passed", async () => {
+    it("should return false if valid array is passed", async () => {
       // given
-      const value = [faker.random.word()];
+      const value = [faker.word.words(1)];
 
       // when
       const response = isEmpty(value);

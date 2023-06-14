@@ -32,11 +32,11 @@ describe("AuthService", (): void => {
     const { sut, listeners } = makeSut();
     const email = faker.internet.email();
     const password = faker.internet.password();
-    const token = faker.random.alphaNumeric(20);
+    const token = faker.string.alphanumeric(20);
     const user = new User(
-      faker.random.alphaNumeric(20),
-      faker.name.firstName(),
-      faker.name.lastName(),
+      faker.string.alphanumeric(20),
+      faker.person.firstName(),
+      faker.person.lastName(),
       faker.internet.email()
     );
     const authMock = new AuthServiceMock({ email, password }, token, user);
@@ -57,11 +57,11 @@ describe("AuthService", (): void => {
     const { sut, listeners } = makeSut();
     const email = faker.internet.email();
     const password = faker.internet.password();
-    const token = faker.random.alphaNumeric(20);
+    const token = faker.string.alphanumeric(20);
     const user = new User(
-      faker.random.alphaNumeric(20),
-      faker.name.firstName(),
-      faker.name.lastName(),
+      faker.string.alphanumeric(20),
+      faker.person.firstName(),
+      faker.person.lastName(),
       faker.internet.email()
     );
     const authMock = new AuthServiceMock({ email, password }, token, user);
@@ -82,11 +82,11 @@ describe("AuthService", (): void => {
     const { sut, listeners } = makeSut();
     const email = faker.internet.email();
     const password = faker.internet.password();
-    const token = faker.random.alphaNumeric(20);
+    const token = faker.string.alphanumeric(20);
     const user = new User(
-      faker.random.alphaNumeric(20),
-      faker.name.firstName(),
-      faker.name.lastName(),
+      faker.string.alphanumeric(20),
+      faker.person.firstName(),
+      faker.person.lastName(),
       faker.internet.email()
     );
     const authMock = new AuthServiceMock({ email, password }, token, user);

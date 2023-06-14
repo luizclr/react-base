@@ -42,7 +42,7 @@ export const render = (children: ReactElement, options?: OptionsType): RenderRes
   };
 
   if (isNil(options?.isLogged)) {
-    localStorage.setItem("token", faker.random.alphaNumeric(20));
+    localStorage.setItem("token", faker.string.alphanumeric(20));
     localStorage.setItem("user", JSON.stringify(user));
   } else {
     localStorage.clear();
