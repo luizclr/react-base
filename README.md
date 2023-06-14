@@ -1,3 +1,8 @@
+# 🚧 work in progress 🚧
+
+> ### **warning**: People are still working here. The features in this repository may not be completed and bugs can be found.
+
+<br/> 
 
 ![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)
 ![Webpack](https://img.shields.io/badge/webpack-%238DD6F9.svg?style=for-the-badge&logo=webpack&logoColor=black)
@@ -12,17 +17,19 @@
 ![Visual Studio Code](https://img.shields.io/badge/Visual%20Studio%20Code-0078d7.svg?style=for-the-badge&logo=visual-studio-code&logoColor=white)
 ![Git](https://img.shields.io/badge/git-%23F05033.svg?style=for-the-badge&logo=git&logoColor=white)
 
-# 🚧 work in progress 🚧
-
-![example workflow](https://github.com/luizclr/react-base/actions/workflows/main.yml/badge.svg)
-[![Netlify Status](https://api.netlify.com/api/v1/badges/3686df98-70c6-43be-bb8b-f5f7b5b238c9/deploy-status)](https://app.netlify.com/sites/react-base/deploys)
 
 # 🔍 React Base
 
 ## 🌐 [react-base.netlify.app/](https://react-base.netlify.app/)
+![example workflow](https://github.com/luizclr/react-base/actions/workflows/main.yml/badge.svg)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/3686df98-70c6-43be-bb8b-f5f7b5b238c9/deploy-status)](https://app.netlify.com/sites/react-base/deploys)
+
 
 ## 📖 Tabe of contents
 
+1. [💡 Motivation](#motivation)
+    - [Intro](#intro)
+    - [Technologies used](#technologies-used)
 1. [📋 Requirements](#requirements)
 2. [🛠️ Installation and usage](#installation-and-usage)
     - [Using yarn](#using-yarn)
@@ -31,6 +38,43 @@
 4. [🧑🏻‍💻 Contributing](#contributing)
     - [Branch names](#branch-names)
     - [Commit messages](#commit-messages)
+
+## Motivation
+
+### Intro:
+
+The main objective of this repository is to be used as a template-like to your react projects with many technologies already setted up from scratch.
+
+> Fork this repository and start working over it...
+
+### Technologies used:
+
+- **Language and framework**:
+  - React ([react.dev](https://react.dev/))
+  - TypeScript ([typescriptlang.org](https://www.typescriptlang.org/))
+  - Node.js ([nodejs.org](https://nodejs.org/en))
+- **Styling**:
+  - Styled components ([styled-components.com](https://styled-components.com/))
+  - React styled guide ([github.com/luizclr/react-styled-guide](https://github.com/luizclr/react-styled-guide))
+- **Build and development**:
+  - Webpack ([webpack.js.org](https://webpack.js.org/))
+  - Babel ([babeljs.io](https://babeljs.io/))
+  - Docker ([docker.com](https://www.docker.com/))
+  - Nginx ([nginx.com](https://www.nginx.com/))
+- **Linting**:
+  - Eslint ([eslint.org](https://eslint.org/))
+  - Prettier ([prettier.io](https://prettier.io/))
+- **Testing**:
+  - Jest ([jestjs.io](https://jestjs.io/))
+  - React testing library ([testing-library.com/react-testing-library](https://testing-library.com/docs/react-testing-library/intro/))
+- **API consuming**
+  - Axios ([axios-http.com](https://axios-http.com/docs/intro))
+- **CI/CD**:
+  - Github Actions ([github.com/features/actions](https://github.com/features/actions))
+  - Netlify ([netlify.com](https://www.netlify.com/))
+- **Other tools**:
+  - Husky ([typicode.github.io/husky](https://typicode.github.io/husky/))
+
 
 ## Requirements
 
