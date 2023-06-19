@@ -9,6 +9,7 @@ import {
   Version,
 } from "~/components/sidebar/sidebar.styles";
 import { BaseSidebarProps } from "~/components/sidebar/types";
+import { PATHS } from "~/routes/paths";
 
 export const BaseSidebar: React.FC<BaseSidebarProps> = ({
   handleLogoutClick,
@@ -20,10 +21,10 @@ export const BaseSidebar: React.FC<BaseSidebarProps> = ({
       <SidebarContent>
         <List>
           <ListItem>
-            <ListItemLink to={"/"}>Home</ListItemLink>
+            <ListItemLink to={PATHS.HOME}>Home</ListItemLink>
           </ListItem>
           <ListItem>
-            <ListItemLink to={"/profile"}>Profile</ListItemLink>
+            <ListItemLink to={PATHS.PROFILE}>Profile</ListItemLink>
           </ListItem>
           <ListItem gutters={true} onClick={handleLogoutClick}>
             Logout

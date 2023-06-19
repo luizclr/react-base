@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 import { User } from "~/entities/user";
 import { Login as BaseLogin } from "~/pages/login/login";
+import { PATHS } from "~/routes/paths";
 import { useApp } from "~/state/app/hook";
 import { useAuth } from "~/state/auth/hook";
 
@@ -12,7 +13,7 @@ export const Login: React.FC = () => {
   const { signIn, isAuthenticated, authService } = useAuth();
 
   useEffect((): void => {
-    if (isAuthenticated) navigate("/");
+    if (isAuthenticated) navigate(PATHS.HOME);
   }, [isAuthenticated]);
 
   const handleSubmit = async (email: string, password: string): Promise<void> => {
@@ -28,7 +29,7 @@ export const Login: React.FC = () => {
     signIn(user, token);
 
     setIsLoading(false);
-    navigate("/");
+    navigate(PATHS.HOME);
   };
 
   const onUnauthorized = (): void => {

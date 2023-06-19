@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { ThemeTypes, useTheme } from "react-styled-guide";
 
 import { BaseSidebar } from "~/components/sidebar/sidebar";
+import { PATHS } from "~/routes/paths";
 import { useApp } from "~/state/app/hook";
 import { useAuth } from "~/state/auth/hook";
 
@@ -25,7 +26,7 @@ export const Sidebar: React.FC = () => {
     signOut();
     storageService.delete("token");
     storageService.delete("user");
-    navigate("/login");
+    navigate(PATHS.LOGIN);
   };
 
   return (
