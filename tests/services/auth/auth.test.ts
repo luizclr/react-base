@@ -34,7 +34,7 @@ describe("AuthService", (): void => {
     const password = faker.internet.password();
     const token = faker.string.alphanumeric(20);
     const user = new User(
-      faker.string.alphanumeric(20),
+      faker.string.uuid(),
       faker.person.firstName(),
       faker.person.lastName(),
       faker.internet.email()
@@ -59,7 +59,7 @@ describe("AuthService", (): void => {
     const password = faker.internet.password();
     const token = faker.string.alphanumeric(20);
     const user = new User(
-      faker.string.alphanumeric(20),
+      faker.string.uuid(),
       faker.person.firstName(),
       faker.person.lastName(),
       faker.internet.email()
@@ -84,7 +84,7 @@ describe("AuthService", (): void => {
     const password = faker.internet.password();
     const token = faker.string.alphanumeric(20);
     const user = new User(
-      faker.string.alphanumeric(20),
+      faker.string.uuid(),
       faker.person.firstName(),
       faker.person.lastName(),
       faker.internet.email()

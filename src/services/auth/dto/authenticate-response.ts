@@ -2,7 +2,7 @@ import { z } from "zod";
 
 import { userDTO } from "~/services/user/dto/user";
 
-export const AuthenticateResponse = z.object({
+export const AuthenticateResponseDTO = z.object({
   token: z.string(),
   user: userDTO,
 });

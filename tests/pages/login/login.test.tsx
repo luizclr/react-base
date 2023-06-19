@@ -4,7 +4,7 @@ import { BrowserRouter } from "react-router-dom";
 import { Login } from "~/pages/login/login.container";
 
 describe("<Login />", () => {
-  it.skip("should be able to mount <Login /> component", async () => {
+  it("should be able to mount <Login /> component", async () => {
     // given
     const { asFragment } = render(
       <BrowserRouter>

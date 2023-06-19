@@ -2,7 +2,7 @@ import { StatusCodes } from "http-status-codes";
 
 import { HttpClient } from "~/data/http/http-client";
 import { ErrorHandler } from "~/infra/http/error-handler";
-import { GetUserByIdResponse } from "~/services/user/dto/get-user-by-id-response";
+import { GetUserByIdResponseDTO } from "~/services/user/dto/get-user-by-id-response";
 import { UserListeners } from "~/services/user/types";
 
 export default class UserService {
@@ -15,7 +15,7 @@ export default class UserService {
         method: "get",
       });
 
-      const user = await response.getData(GetUserByIdResponse.parse);
+      const user = await response.getData(GetUserByIdResponseDTO.parse);
 
       listeners.onSuccess(user);
     } catch (error) {

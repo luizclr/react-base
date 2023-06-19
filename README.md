@@ -72,6 +72,8 @@ The main objective of this repository is to be used as a template-like to your r
 - **CI/CD**:
   - Github Actions ([github.com/features/actions](https://github.com/features/actions))
   - Netlify ([netlify.com](https://www.netlify.com/))
+- **Schema Validation**:
+  - Zod ([zod.dev](https://zod.dev/))
 - **Other tools**:
   - Husky ([typicode.github.io/husky](https://typicode.github.io/husky/))
 

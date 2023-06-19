@@ -7,7 +7,7 @@ export class HttpResponse {
     return this.statusCode === status;
   }
 
-  public async getData<T>(parse: DataParser<T>): Promise<T> {
-    return await parse(this.data);
+  public async getData<T>(parser: DataParser<T>): Promise<T> {
+    return await parser(this.data);
   }
 }
