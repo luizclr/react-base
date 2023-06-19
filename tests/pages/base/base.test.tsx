@@ -2,7 +2,7 @@ import { render } from "@testing-library/react";
 import { BrowserRouter } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
 
-import { Base } from "~/pages/base/base";
+import Base from "~/pages/base/base";
 import initialStyleGuide from "~/style-guide";
 
 describe("<Base />", () => {

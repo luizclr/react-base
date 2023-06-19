@@ -11,6 +11,11 @@ module.exports = {
     filename: "[name].[contenthash].js",
     chunkFilename: "[name].[contenthash].js",
   },
+  optimization: {
+    splitChunks: {
+      chunks: "all",
+    },
+  },
   module: {
     rules: [
       {

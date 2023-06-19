@@ -1,43 +1,31 @@
-import { ReactElement } from "react";
-import { Navigate, Route, Routes } from "react-router-dom";
+import { lazy } from "react";
+import { createBrowserRouter } from "react-router-dom";
 
-import { Base } from "~/pages/base/base";
+import Base from "~/pages/base/base";
 import { Login } from "~/pages/login/login.container";
-import { useAuth } from "~/state/auth/hook";
+import { PrivateRoute } from "~/routes/private-route";
 
-export type ProtectedRouteProps = {
-  isAuthenticated: boolean;
-  authenticationPath: string;
-  outlet: JSX.Element;
-};
+const Home = lazy(async () => await import("~/pages/home/home"));
+const Profile = lazy(async () => await import("~/pages/profile/profile"));
 
-export const PrivateRoute = ({
-  isAuthenticated,
-  authenticationPath,
-  outlet,
-}: ProtectedRouteProps): ReactElement => {
-  if (isAuthenticated) {
-    return outlet;
-  } else {
-    return <Navigate to={{ pathname: authenticationPath }} />;
-  }
-};
-
-export const AppRoutes = (): ReactElement => {
-  const { isAuthenticated } = useAuth();
-
-  const defaultProtectedRouteProps: Omit<ProtectedRouteProps, "outlet"> = {
-    isAuthenticated,
-    authenticationPath: "/login",
-  };
-
-  return (
-    <Routes>
-      <Route path="/login" element={<Login />} index />
-      <Route
-        path="/"
-        element={<PrivateRoute {...defaultProtectedRouteProps} outlet={<Base />} />}
-      />
-    </Routes>
-  );
-};
+export const router = createBrowserRouter([
+  {
+    path: "/login",
+    element: <Login />,
+    index: true,
+  },
+  {
+    path: "/",
+    element: <Base />,
+    children: [
+      {
+        path: "/",
+        element: <PrivateRoute outlet={<Home />} />,
+      },
+      {
+        path: "/profile",
+        element: <PrivateRoute outlet={<Profile />} />,
+      },
+    ],
+  },
+]);

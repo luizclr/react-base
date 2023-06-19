@@ -1,5 +1,8 @@
+import { Link } from "react-router-dom";
 import { getColor, getColorByTheme, getFontSize, getFontWeight, getSize } from "react-styled-guide";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
+
+import { isNil } from "~/utils";
 
 export const Container = styled.div`
   background-color: ${getColorByTheme(
@@ -38,9 +41,8 @@ export const List = styled.ul`
   margin-top: ${getSize(({ xs }) => xs)};
 `;
 
-export const ListItem = styled.li`
+export const BaseListItem = css`
   transition: none;
-  padding: ${getSize(({ xxxs }) => xxxs)};
   font-weight: ${getFontWeight(({ medium }) => medium)};
   border-bottom: 1px solid
     ${getColorByTheme(
@@ -59,6 +61,19 @@ export const ListItem = styled.li`
   :last-child {
     border: none;
   }
+`;
+
+export const ListItem = styled.li<{ gutters?: boolean }>`
+  ${BaseListItem}
+  padding: ${({ gutters }) => (isNil(gutters) || !gutters ? 0 : getSize(({ xxxs }) => xxxs))};
+`;
+
+export const ListItemLink = styled(Link)`
+  color: ${getColor(({ neutral }) => neutral.lightest)};
+  text-decoration: none;
+  width: 100%;
+  display: flex;
+  padding: ${getSize(({ xxxs }) => xxxs)};
 `;
 
 export const Version = styled.p`

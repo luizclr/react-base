@@ -2,6 +2,7 @@ import {
   Container,
   List,
   ListItem,
+  ListItemLink,
   SidebarContent,
   SidebarWrapper,
   Text,
@@ -18,13 +19,21 @@ export const BaseSidebar: React.FC<BaseSidebarProps> = ({
       <Text>React Base</Text>
       <SidebarContent>
         <List>
-          <ListItem>Config</ListItem>
-          <ListItem>Profile</ListItem>
-          <ListItem onClick={handleLogoutClick}>Logout</ListItem>
+          <ListItem>
+            <ListItemLink to={"/"}>Home</ListItemLink>
+          </ListItem>
+          <ListItem>
+            <ListItemLink to={"/profile"}>Profile</ListItemLink>
+          </ListItem>
+          <ListItem gutters={true} onClick={handleLogoutClick}>
+            Logout
+          </ListItem>
         </List>
         <Container>
           <List>
-            <ListItem onClick={handleChangeThemeClick}>Change theme</ListItem>
+            <ListItem gutters={true} onClick={handleChangeThemeClick}>
+              Change theme
+            </ListItem>
           </List>
           <Version>v0.1.0</Version>
         </Container>
