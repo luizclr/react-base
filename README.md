@@ -167,9 +167,10 @@ make lint
 
 ```
 └─ component
-    ├─ component.tsx
-    ├─ component.styles.tsx
     ├─ component.container.tsx
+    ├─ component.schema.ts
+    ├─ component.styles.tsx
+    ├─ component.tsx
     └─ types.ts
 ```
 

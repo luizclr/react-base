@@ -2,8 +2,43 @@
 
 exports[`<Login /> should be able to mount <Login /> component 1`] = `
 <DocumentFragment>
-  .c0 {
-  background-color: #18cf89;
+  .c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  background-color: inherit;
+}
+
+.c5 {
+  padding: 8px;
+  border-radius: 4px;
+  border: 1px solid #bababa;
+  outline: none;
+  margin-top: 4px;
+}
+
+.c5:focus {
+  border-color: #545454;
+}
+
+.c4 {
+  font-size: 12pt;
+  color: #707070;
+}
+
+.c6 {
+  font-size: 10pt;
+  color: #ec6666;
+  margin-top: 4px;
+  height: 16px;
+}
+
+.c0 {
+  background-color: #77dd77;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -17,49 +52,25 @@ exports[`<Login /> should be able to mount <Login /> component 1`] = `
   -ms-flex-align: center;
   align-items: center;
   height: 100%;
-  padding: 20px;
-  color: #4e4e4e;
-}
-
-.c3 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  margin-bottom: 10px;
-  background-color: inherit;
+  padding: 16px;
+  color: #545454;
 }
 
 .c1 {
-  background-color: white;
-  border-radius: 10px;
-  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 24px;
   max-width: 100%;
   width: 400px;
 }
 
 .c2 {
   font-size: 18pt;
-  margin-bottom: 20px;
-  color: #474b4e;
+  margin-bottom: 24px;
+  color: #545454;
 }
 
-.c4 {
-  padding: 8px;
-  border-radius: 5px;
-  border: 1px solid #bebebe;
-  outline: none;
-  margin: 5px 0;
-}
-
-.c4:focus {
-  border-color: #5c5c5c;
-}
-
-.c5 {
+.c7 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -71,19 +82,20 @@ exports[`<Login /> should be able to mount <Login /> component 1`] = `
   background-color: inherit;
 }
 
-.c6 {
-  background-color: #ff8a3c;
-  border-radius: 7px;
-  padding: 10px;
+.c8 {
+  background-color: #f26419;
+  border-radius: 4px;
+  padding: 8px;
   border: none;
-  color: white;
-  font-weight: bold;
+  color: #fff;
+  font-weight: 600;
   margin: 0 auto;
+  margin-top: 8px;
   width: 50%;
 }
 
-.c6:hover {
-  background-color: #ff6600;
+.c8:hover {
+  background-color: #c25014;
   cursor: pointer;
 }
 
@@ -103,41 +115,45 @@ exports[`<Login /> should be able to mount <Login /> component 1`] = `
           class="c3"
         >
           <label
+            class="c4"
             for="email"
           >
             E-mail
           </label>
           <input
-            class="c4"
+            class="c5"
             name="email"
-            placeholder="example@email.com"
-            required=""
+            placeholder="example@example.com"
             type="email"
-            value=""
+          />
+          <p
+            class="c6"
           />
         </div>
         <div
           class="c3"
         >
           <label
+            class="c4"
             for="password"
           >
             Password
           </label>
           <input
-            class="c4"
+            class="c5"
             name="password"
             placeholder="**********"
-            required=""
             type="password"
-            value=""
+          />
+          <p
+            class="c6"
           />
         </div>
         <div
-          class="c5"
+          class="c7"
         >
           <button
-            class="c6"
+            class="c8"
             data-testid="submit"
             type="submit"
           >

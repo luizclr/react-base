@@ -1,46 +1,28 @@
+import { getColor, getFontSize, getFontWeight, getSize } from "react-styled-guide";
 import styled from "styled-components";
 
 export const Container = styled.div`
-  background-color: #18cf89;
+  background-color: ${getColor(({ success }) => success.medium)};
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100%;
-  padding: 20px;
-  color: #4e4e4e;
-`;
-
-export const Flex = styled.div`
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 10px;
-  background-color: inherit;
+  padding: ${getSize(({ xxxs }) => xxxs)};
+  color: ${getColor(({ neutral }) => neutral.dark)};
 `;
 
 export const Card = styled.div`
-  background-color: white;
-  border-radius: 10px;
-  padding: 20px;
+  background-color: #fff;
+  border-radius: ${getSize(({ nano }) => nano)};
+  padding: ${getSize(({ xxs }) => xxs)};
   max-width: 100%;
   width: 400px;
 `;
 
 export const Title = styled.h2`
-  font-size: 18pt;
-  margin-bottom: 20px;
-  color: #474b4e;
-`;
-
-export const Input = styled.input`
-  padding: 8px;
-  border-radius: 5px;
-  border: 1px solid #bebebe;
-  outline: none;
-  margin: 5px 0;
-
-  :focus {
-    border-color: #5c5c5c;
-  }
+  font-size: ${getFontSize(({ m }) => m)};
+  margin-bottom: ${getSize(({ xxs }) => xxs)};
+  color: ${getColor(({ neutral }) => neutral.dark)};
 `;
 
 export const ButtonWrapper = styled.div`
@@ -50,17 +32,18 @@ export const ButtonWrapper = styled.div`
 `;
 
 export const Button = styled.button`
-  background-color: #ff8a3c;
-  border-radius: 7px;
-  padding: 10px;
+  background-color: ${getColor(({ secondary }) => secondary.medium)};
+  border-radius: ${getSize(({ quark }) => quark)};
+  padding: ${getSize(({ nano }) => nano)};
   border: none;
-  color: white;
-  font-weight: bold;
+  color: #fff;
+  font-weight: ${getFontWeight(({ bold }) => bold)};
   margin: 0 auto;
+  margin-top: ${getSize(({ nano }) => nano)};
   width: 50%;
 
   :hover {
-    background-color: #ff6600;
+    background-color: ${getColor(({ secondary }) => secondary.tinyDark)};
     cursor: pointer;
   }
 `;
