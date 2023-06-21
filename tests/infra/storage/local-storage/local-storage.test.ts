@@ -16,7 +16,7 @@ describe("LocalStorageService", (): void => {
     };
 
     // when
-    storage.set(key, user);
+    storage.set(key, JSON.stringify(user));
     const localUser = storage.get<typeof user>(key, parser);
 
     // then
@@ -33,7 +33,7 @@ describe("LocalStorageService", (): void => {
     };
 
     // when
-    storage.set(key, user);
+    storage.set(key, JSON.stringify(user));
     storage.delete(key);
 
     // then

@@ -18,7 +18,7 @@ export const GlobalProvider = ({
   const { storageService } = initialServicesState;
 
   const getInitialTheme = (): ThemeTypes => {
-    const storedItem = storageService.get("theme", (item: unknown) => JSON.stringify(item));
+    const storedItem = storageService.get("theme", (item: string) => item);
     let theme = ThemeTypes.light;
 
     if (storedItem === ThemeTypes.dark) theme = ThemeTypes.dark;
@@ -30,10 +30,10 @@ export const GlobalProvider = ({
 
   const getInitialAuthState = (): AuthState => {
     if (storageService.exists("token") && storageService.exists("user")) {
-      const token = storageService.get("token", (item: unknown) => JSON.stringify(item));
-      // @ts-expect-error: -
-      const user = storageService.get("user", (item: User) => {
-        return new User(item.id, item.firstName, item.lastName, item.email);
+      const token = storageService.get("token", (item: string) => item);
+      const user = storageService.get("user", (item: string) => {
+        const user = JSON.parse(item);
+        return new User(user.id, user.firstName, user.lastName, user.email);
       });
 
       return {

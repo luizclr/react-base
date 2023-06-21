@@ -3,13 +3,13 @@ import { StorageService } from "~/data/storage/storage-service";
 import { isNil } from "~/utils";
 
 export class InMemoryStorageService implements StorageService {
-  private items: Record<string, unknown> = {};
+  private items: Record<string, string> = {};
 
-  public get<T>(key: string, parse: (data: unknown) => T): T {
+  public get<T>(key: string, parse: (data: string) => T): T {
     return parse(this.items[key]);
   }
 
-  public set(key: string, value: unknown): void {
+  public set(key: string, value: string): void {
     this.items[key] = value;
   }
 

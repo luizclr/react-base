@@ -24,7 +24,7 @@ export const Login: React.FC = () => {
 
   const onSuccess = (token: string, user: User): void => {
     storageService.set("token", token);
-    storageService.set("user", user);
+    storageService.set("user", JSON.stringify(user));
 
     signIn(user, token);
 

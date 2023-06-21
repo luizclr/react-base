@@ -11,12 +11,12 @@ describe("InMemoryStorageService", (): void => {
     const user = {
       name: username,
     };
-    const parser = <user>(data: unknown): user => {
-      return data as user;
+    const parser = <user>(data: string): user => {
+      return JSON.parse(data) as user;
     };
 
     // when
-    storage.set(key, user);
+    storage.set(key, JSON.stringify(user));
     const localUser = storage.get<typeof user>(key, parser);
 
     // then
@@ -33,7 +33,7 @@ describe("InMemoryStorageService", (): void => {
     };
 
     // when
-    storage.set(key, user);
+    storage.set(key, JSON.stringify(user));
     storage.delete(key);
 
     // then
