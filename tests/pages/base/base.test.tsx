@@ -6,7 +6,7 @@ import Base from "~/pages/base/base";
 import initialStyleGuide from "~/style-guide";
 
 describe("<Base />", () => {
-  it("should be able to mount <Base /> component", async () => {
+  it("should be able to mount <Base /> component", () => {
     // given
     const { asFragment } = render(
       <BrowserRouter>
