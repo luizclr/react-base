@@ -116,18 +116,22 @@ exports[`<Login /> should be able to mount <Login /> component 1`] = `
         >
           <label
             class="c4"
+            data-testid="email-label"
             for="email"
           >
             E-mail
           </label>
           <input
             class="c5"
+            data-testid="email-input"
             name="email"
             placeholder="example@example.com"
             type="email"
           />
           <p
             class="c6"
+            data-testid="email-error"
+            role="form-field-error"
           />
         </div>
         <div
@@ -135,18 +139,22 @@ exports[`<Login /> should be able to mount <Login /> component 1`] = `
         >
           <label
             class="c4"
+            data-testid="password-label"
             for="password"
           >
             Password
           </label>
           <input
             class="c5"
+            data-testid="password-input"
             name="password"
             placeholder="**********"
             type="password"
           />
           <p
             class="c6"
+            data-testid="password-error"
+            role="form-field-error"
           />
         </div>
         <div

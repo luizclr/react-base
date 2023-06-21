@@ -7,6 +7,9 @@ export const InputFIeld: React.FC<InputFieldProps> = ({
   name,
   errors,
   register,
+  labelTestId = `${name}-label`,
+  inputTestId = `${name}-input`,
+  errorTestId = `${name}-error`,
   ...otherProps
 }: InputFieldProps) => {
   const errorResult = get(errors, `${name}.message`);
@@ -14,9 +17,18 @@ export const InputFIeld: React.FC<InputFieldProps> = ({
 
   return (
     <Flex>
-      <Label htmlFor={name}>{label}</Label>
-      <Input hasError={!isEmpty(errorMessage)} {...register(name)} {...otherProps} />
-      <Error>{errorMessage}</Error>
+      <Label data-testid={labelTestId} htmlFor={name}>
+        {label}
+      </Label>
+      <Input
+        hasError={!isEmpty(errorMessage)}
+        data-testid={inputTestId}
+        {...register(name)}
+        {...otherProps}
+      />
+      <Error role="form-field-error" data-testid={errorTestId}>
+        {errorMessage}
+      </Error>
     </Flex>
   );
 };

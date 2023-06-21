@@ -8,4 +8,7 @@ export type InputFieldProps = {
   type: HTMLInputTypeAttribute;
   register: UseFormRegister<FieldValues>;
   errors: FieldErrors<FieldValues>;
+  labelTestId?: string;
+  inputTestId?: string;
+  errorTestId?: string;
 };
