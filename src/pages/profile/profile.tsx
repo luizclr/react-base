@@ -1,3 +1,5 @@
-const Profile: React.FC = () => <h1>Profile</h1>;
+import { Title } from "~/components/title/title";
+
+const Profile: React.FC = () => <Title>Profile</Title>;
 
 export default Profile;
