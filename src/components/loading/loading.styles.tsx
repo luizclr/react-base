@@ -1,3 +1,4 @@
+import { getColor, getFontWeight, getSize } from "react-styled-guide";
 import styled from "styled-components";
 
 import { LoadingProps } from "~/components/loading/types";
@@ -17,7 +18,7 @@ export const Background = styled.div<LoadingProps>`
 `;
 
 export const Text = styled.p`
-  color: #fff;
-  font-weight: bold;
-  margin-bottom: 15px;
+  color: ${getColor(({ neutral }) => neutral.lightest)};
+  font-weight: ${getFontWeight(({ bold }) => bold)};
+  margin-bottom: ${getSize(({ xxxs }) => xxxs)};
 `;

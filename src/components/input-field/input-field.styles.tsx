@@ -31,5 +31,5 @@ export const Error = styled.p`
   font-size: ${getFontSize(({ xxxs }) => xxxs)};
   color: ${getColor(({ error }) => error.light)};
   margin-top: ${getSize(({ quark }) => quark)};
-  height: ${getSize(({ xxxs }) => xxxs)};
+  min-height: ${getSize(({ xxxs }) => xxxs)};
 `;

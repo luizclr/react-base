@@ -1,4 +1,4 @@
-import { getColorByTheme } from "react-styled-guide";
+import { getColorByTheme, getSize } from "react-styled-guide";
 import { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
@@ -14,7 +14,7 @@ const GlobalStyle = createGlobalStyle`
   #root {
     width: 100%;
     height: 100%;
-    font-family: Open-Sans, Helvetica, Sans-Serif;
+    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   }
 
   div {
@@ -25,19 +25,24 @@ const GlobalStyle = createGlobalStyle`
   }
 
   &::-webkit-scrollbar {
-    width: 8px;
+    width: ${getSize(({ nano }) => nano)};
   }
 
   &::-webkit-scrollbar-thumb {
-    border-radius: 5px;
-    background: #6f6f6f;
-    width: 8px;
+    border-radius: ${getSize(({ quark }) => quark)};
+    background: ${getColorByTheme(
+      ({ neutral }) => neutral.tinyDark,
+      ({ neutral }) => neutral.light
+    )};
+    width: ${getSize(({ nano }) => nano)};
   }
 
   &::-webkit-scrollbar-track {
-    border-radius: 5px;
-    background: #c6c6c6;
-    width: 8px;
+    background: ${getColorByTheme(
+      ({ neutral }) => neutral.light,
+      ({ neutral }) => neutral.tinyDark
+    )};
+    width: ${getSize(({ nano }) => nano)};
   }
 `;
 

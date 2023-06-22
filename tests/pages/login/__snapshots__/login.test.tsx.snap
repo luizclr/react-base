@@ -34,7 +34,7 @@ exports[`<Login /> should be able to mount <Login /> component 1`] = `
   font-size: 10pt;
   color: #ec6666;
   margin-top: 4px;
-  height: 16px;
+  min-height: 16px;
 }
 
 .c0 {
