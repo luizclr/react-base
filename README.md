@@ -137,6 +137,11 @@ yarn start
 
 ### Using Docker
 
+create a docker network:
+```shell
+docker network create react-base
+```
+
 build image:
 ```shell
 make build
