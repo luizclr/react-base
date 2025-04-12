@@ -14,6 +14,24 @@ When a new release is proposed:
 
 ### Added
 
+-
+
+### Fixed
+
+-
+
+### Changed
+
+-
+
+### Removed
+
+-
+
+## [1.0.0] 2025-04-12
+
+### Added
+
 - Global context with App and Auth states.
 - Added `AuthService` tests.
 - Added `LocalStorageService`.
