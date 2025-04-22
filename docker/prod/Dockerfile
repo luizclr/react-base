@@ -1,4 +1,4 @@
-FROM node:18.12-alpine as build
+FROM node:22.14-alpine as build
 WORKDIR /app
 ENV NODE_ENV production
 COPY package.json ./

@@ -8,15 +8,15 @@ build-prod:
 
 # build and run container
 up:
-	docker-compose up -d
+	docker compose up -d
 
 up-prod:
-	docker-compose -f docker-compose.prod.yml up -d
+	docker compose -f docker compose.prod.yml up -d
 
 # stop container
 down:
-	docker-compose kill
-	docker-compose rm -f
+	docker compose kill
+	docker compose rm -f
 
 down-prod:
 	docker stop $(CONTAINER_NAME)-prod
@@ -27,18 +27,18 @@ sh:
 
 # list containers
 ps:
-	docker-compose ps
+	docker compose ps
 
 # package scripts
 lint:
-	docker-compose run --rm $(CONTAINER_NAME) yarn lint
+	docker compose run --rm $(CONTAINER_NAME) yarn lint
 lint-fix:
-	docker-compose run --rm $(CONTAINER_NAME) yarn lint:fix
+	docker compose run --rm $(CONTAINER_NAME) yarn lint:fix
 test:
-	docker-compose run --rm $(CONTAINER_NAME) yarn test
+	docker compose run --rm $(CONTAINER_NAME) yarn test
 test-watch:
-	docker-compose run --rm $(CONTAINER_NAME) yarn test:watch
+	docker compose run --rm $(CONTAINER_NAME) yarn test:watch
 test-coverage:
-	docker-compose run --rm $(CONTAINER_NAME) yarn test:coverage
+	docker compose run --rm $(CONTAINER_NAME) yarn test:coverage
 test-coverage-watch:
-	docker-compose run --rm $(CONTAINER_NAME) yarn test:coverage:watch
+	docker compose run --rm $(CONTAINER_NAME) yarn test:coverage:watch
